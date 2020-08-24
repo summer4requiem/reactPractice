@@ -1,23 +1,27 @@
 import React from 'react';
-import Tecknologies from "./Tecknologies";
-import Header from "./Header";
+import Navigation from "./components/navigation";
+import Header from "./components/header";
 import './App.css';
 import Profile from "./components/profile";
+import Music from "./components/music";
+import News from "./components/news";
+import Dialogs from "./components/dialogs";
+import { BrowserRouter, Route} from "react-router-dom";
 
 
 const App = () => (
-  <div className="App">
-    <Header />
-    <nav className="navigation">
-      <Tecknologies />
-    </nav>
-    <main>
-      <div className="posts__img">
-        <img src="https://freestocks.org/fs/wp-content/uploads/2020/07/wheat_field_2-1000x667.jpg" alt="" width="100%" height="160" />
-      </div>
-      <Profile />
-    </main>
-  </div >
+  <BrowserRouter>
+    <div className="App">
+      <Header />
+      <Navigation />
+      <main className="main">
+        <Route path="/profile" component={Profile} />
+        <Route path="/news" component={News} />
+        <Route path="/music" component={Music} />
+        <Route path="/dialogs" component={Dialogs} />
+      </main>
+    </div >
+  </BrowserRouter>
 );
 
 export default App;

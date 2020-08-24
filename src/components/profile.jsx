@@ -1,9 +1,10 @@
 import React from 'react';
+import Post from "../components/post";
 
 const Profile = () => (
-    <section className="content">
+  <section className="content">
     <div className="content__img">
-      <img src="https://i.pinimg.com/originals/46/da/e5/46dae512e375bee2664a025507da8795.jpg" alt="" width="100" height="80" />
+      <img src="https://i.pinimg.com/originals/46/da/e5/46dae512e375bee2664a025507da8795.jpg" alt="" width="100%" height="300px" />
     </div>
     <h1 className="content__header">Agata Ageeva</h1>
     <ul className="content__list">
@@ -18,7 +19,10 @@ const Profile = () => (
         <button className="posts_send-btn" type="submit">отправить</button>
       </div>
     </div>
+    <Post message="hi, how are you" like="15" />
+    <Post message="my second post" like="20" />
+    <Post message="it's my first post" like="5" />
   </section>
 )
 
-export  default Profile;
+export default Profile;
