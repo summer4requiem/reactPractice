@@ -1,24 +1,24 @@
 import React from 'react';
-import Navigation from "./components/navigation";
-import Header from "./components/header";
+import Navigation from "./components/Navigation/Navigation";
+import Header from "./components/Header/Header";
 import './App.css';
-import Profile from "./components/profile";
-import Music from "./components/music";
-import News from "./components/news";
-import Dialogs from "./components/dialogs";
-import { BrowserRouter, Route} from "react-router-dom";
+import Profile from "./components/Profile/Profile";
+import Music from "./components/Music/Music";
+import News from "./components/News/News";
+import Dialogs from "./components/Dialogs/Dialogs";
+import { BrowserRouter, Route } from "react-router-dom";
 
 
-const App = () => (
+const App = (props) => (
   <BrowserRouter>
     <div className="App">
       <Header />
       <Navigation />
       <main className="main">
-        <Route path="/profile" component={Profile} />
-        <Route path="/news" component={News} />
-        <Route path="/music" component={Music} />
-        <Route path="/dialogs" component={Dialogs} />
+        <Route path="/profile" render={() => <Profile posts={props.posts} />} />
+        <Route path="/news" render={() => <News />} />
+        <Route path="/music" render={() => <Music />} />
+        <Route exact path="/dialogs" render={() => <Dialogs messages={props.messages} dialogs={props.dialogs} />} />
       </main>
     </div >
   </BrowserRouter>

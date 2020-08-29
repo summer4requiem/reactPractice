@@ -1,0 +1,21 @@
+.navigationList {
+    padding: 1em 1em;
+    list-style: none;
+}
+
+.navigationItem a{
+    text-decoration: none;
+    color: azure;
+}
+
+.navigationItem .activeLink{
+    color: gold;
+}
+
+.navigationList li {
+    margin-bottom: 1em;
+}
+
+.navigation {
+    background-color: #45688e;
+}

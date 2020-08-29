@@ -9,28 +9,20 @@ ul {
     outline: 1px ridge rgb(117 228 134);
 } */
 
-.post{
-    margin-bottom: 2em;
-    border-bottom: 1px solid #000;
-}
 
-.post_img{
-    border-radius: 50%;
-}
+
+
 
 .App {
     font-size: 14px;
     display: grid;
     grid-template-rows: 70px 1fr;
-    grid-template-columns: 20% 1fr;
+    grid-template-columns: 27% 1fr;
     height: 100vh;
     grid-gap: 2vw;
 }
 
-.posts__img {
-    /* width: 100px; */
-    margin-bottom: 30px;
-}
+
 
 .header {
     background-color: #45688e;
@@ -46,32 +38,8 @@ ul {
 
 }
 
-.navigation__list {
-    padding: 1em 1em;
-    list-style: none;
-}
-
-.navigation__item a{
-    text-decoration: none;
-    color: azure;
-}
-
-.navigation__item  .navigation__item-active {
-    color: gold;
-}
 
 
-.navigation__list li {
-    margin-bottom: 1em;
-}
-
-.navigation {
-    background-color: #45688e;
-}
-
-.content__list {
-    margin-bottom: 40px;
-}
 
 .posts {
     grid-area: content;

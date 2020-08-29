@@ -1,0 +1,33 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 4fr 10fr;
+}
+
+.dialogsTitle {
+    margin: 0;
+}
+
+.dialogsItemLink {
+    text-decoration: none;
+    color: #333333;
+    font-weight: bold;
+}
+
+.active {
+    color: gold;
+}
+
+.dialogsItem {
+    margin-bottom: 1em;
+    border-bottom: 1px solid #0000001f;
+    padding: 1em;
+}
+
+.messagesItem {
+    margin-bottom: 1em;
+    padding: 1em;
+}
+
+.messagesList {
+    padding: 1.4em 0;
+}
