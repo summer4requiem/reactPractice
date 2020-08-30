@@ -6,7 +6,7 @@ import MakePosts from '../Post/MakePosts';
 const Profile = (props) => (
   <section  className="content" >
     <ProfileInfo />
-    <MakePosts posts={props.posts} />
+    <MakePosts posts={props.state.posts} />
   </section >
 )
 

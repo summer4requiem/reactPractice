@@ -15,10 +15,10 @@ const App = (props) => (
       <Header />
       <Navigation />
       <main className="main">
-        <Route path="/profile" render={() => <Profile posts={props.posts} />} />
+        <Route path="/profile" render={() => <Profile state={props.state.profilePage} />} />
         <Route path="/news" render={() => <News />} />
         <Route path="/music" render={() => <Music />} />
-        <Route exact path="/dialogs" render={() => <Dialogs messages={props.messages} dialogs={props.dialogs} />} />
+        <Route exact path="/dialogs" render={() => <Dialogs state={props.state.messagesPage} />} />
       </main>
     </div >
   </BrowserRouter>
