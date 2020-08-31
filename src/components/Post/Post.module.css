@@ -9,6 +9,13 @@
     padding: 2em 1em;
 }
 
+.postsSendBtn{
+    padding: 1em 2em;
+    border: 0;
+    background-color: #338F31;
+    color: #fff;
+}
+
 .postRating {
     font-weight: bold;
     display: flex;

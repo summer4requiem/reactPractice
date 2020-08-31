@@ -17,7 +17,7 @@ ul {
     font-size: 14px;
     display: grid;
     grid-template-rows: 70px 1fr;
-    grid-template-columns: 27% 1fr;
+    grid-template-columns: 40% 1fr;
     height: 100vh;
     grid-gap: 2vw;
 }
@@ -31,15 +31,12 @@ ul {
     padding: 0.5em;
 }
 
-.dialog{
+.dialog {
     background-color: aquamarine;
     height: 200px;
     width: 100%;
 
 }
-
-
-
 
 .posts {
     grid-area: content;
@@ -66,14 +63,13 @@ ul {
 }
 
 
-.posts_send-btn {
-    padding: 1em 2em;
-    border: 0;
-    background-color: #338F31;
-    color: #fff;
-}
-
 .content {
     color: #000;
     text-transform: uppercase;
+}
+
+@media(min-width:500px) {
+    .App{
+        grid-template-columns: 20% 1fr;
+    }
 }
