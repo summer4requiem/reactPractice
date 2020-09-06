@@ -3,9 +3,9 @@ import s from "./Profile.module.css"
 
 const ProfileInfo = () => (
   <section className={s.description}>
-    <div className={s.descriptionImg}>
+    {/* <div className={s.descriptionImg}>
       <img src="https://images.unsplash.com/photo-1495539406979-bf61750d38ad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="" width="100%" height="auto" />
-    </div>
+    </div> */}
     <div className={s.descriptionBlock}>
       <h1 className={s.descriptionHeader}>Agata Ageeva</h1>
       <ul className={s.descriptionList}>

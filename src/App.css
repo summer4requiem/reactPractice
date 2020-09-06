@@ -11,8 +11,6 @@ ul {
 
 
 
-
-
 .App {
     font-size: 14px;
     display: grid;
@@ -68,8 +66,8 @@ ul {
     text-transform: uppercase;
 }
 
-@media(min-width:500px) {
+@media(min-width:650px) {
     .App{
-        grid-template-columns: 20% 1fr;
+        grid-template-columns: 25% 1fr;
     }
 }

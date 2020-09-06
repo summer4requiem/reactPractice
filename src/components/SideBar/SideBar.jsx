@@ -9,7 +9,7 @@ const FriendItem = (props) => {
     <li className={s.friendsItem}>
       <NavLink to={path}>
       <div>
-      <img src="https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg" alt="" />
+      <img src="https://sun9-5.userapi.com/impg/pKJLmYXoahNBbw0WVBAl_It9RkfUGUkL_S_iVg/8NNeqCXYZaI.jpg?size=200x0&quality=88&crop=477,8,1687,1687&sign=f5124c5af5b3b689c41ecf249f863091&ava=1" alt="" />
       </div>
       <span className={s.friendsItemName}>{props.name}</span>
       </NavLink>
@@ -19,7 +19,6 @@ const FriendItem = (props) => {
 
 
 const Sidebar = (props) => {
-
   let friendsItem = props.state.map((friend) => <FriendItem name={friend.name}  id={friend.id}/>)
   return (
     <aside className={s.sideBarTitle}>

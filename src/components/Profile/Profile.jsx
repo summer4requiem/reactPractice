@@ -3,11 +3,12 @@ import ProfileInfo from "../ProfileInfo/ProfileInfo";
 import MakePosts from '../Post/MakePosts';
 
 
-const Profile = (props) => (
-  <section  className="content" >
-    <ProfileInfo />
-    <MakePosts posts={props.state.posts} />
-  </section >
-)
-
+const Profile = (props) => {
+  return (
+    <section  className="content" >
+      <ProfileInfo />
+      <MakePosts posts={props.profilePage.posts}  addPost = {props.addPost} updatePostFieldText= {props.updatePostFieldText}/>
+    </section >
+  )
+}
 export default Profile;

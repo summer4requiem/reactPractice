@@ -1,6 +1,6 @@
 .dialogs {
     display: grid;
-    grid-template-columns: 4fr 10fr;
+    grid-template-columns: 3fr 10fr;
 }
 
 .dialogsTitle {
@@ -22,9 +22,7 @@
 }
 
 .dialogsItem {
-    margin-bottom: 1em;
-    border-bottom: 1px solid #0000001f;
-    padding: 1em;
+    margin-bottom: 2em;
 }
 
 .messagesItem {
@@ -36,8 +34,51 @@
     padding: 1.4em 0;
 }
 
-.messageField{
+.messageField {
     resize: none;
     height: 20px;
     text-overflow: ellipsis;
+    border-color: #d3d9de;
+    border-radius: 16px;
+    padding: 0.7em 1em;
+}
+
+.dialogsSend {
+    /* width: 100%; */
+    grid-column-start: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em;
+    background-color: #d3d9de;
+}
+
+.dialogsSendTextarea {
+    width: 100%;
+    border: 1px solid #5b5b5b57;
+    border-radius: 16px;
+    resize: none;
+    padding: 0.7rem;
+}
+
+.dialogsSendBtn {
+    background-color: transparent;
+    border: none;
+}
+
+
+.dialogsNames {
+    border-right: 1px solid #5b5b5b57;
+}
+
+
+.dialogsSendBtn svg {
+    width: 30px;
+    height: 30px;
+    fill: #5b5b5b57;
+
+}
+
+.dialogsSendBtn:active svg {
+    fill: #5b5b5bb3;
 }
