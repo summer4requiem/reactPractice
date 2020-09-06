@@ -122,6 +122,5 @@ export let updateMessageFieldText = (text) => {
     rerenderEntireTree(state);
 }
 
-window.state = state;
 
 export default state;
