@@ -3,21 +3,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-
-import state,
-{
-    addPost,
-    subscribe,
-    updatePostFieldText,
-    addMessage,
-    updateMessageFieldText
-} from './Redux/state';
+import store from './Redux/state';
 
 let rerenderEntireTree = () => {
-    ReactDOM.render(<React.StrictMode > <App state={state} addMessage={addMessage} updateMessageFieldText={updateMessageFieldText} addPost={addPost} updatePostFieldText={updatePostFieldText} /></React.StrictMode >, document.getElementById('root'));
+    ReactDOM.render(<React.StrictMode > <App state={store.getState()} addMessage={store.addMessage.bind(store)} updateMessageFieldText={store.updateMessageFieldText.bind(store)} addPost={store.addPost.bind(store)} updatePostFieldText={store.updatePostFieldText.bind(store)} /></React.StrictMode >, document.getElementById('root'));
 };
 
-rerenderEntireTree(state);
-subscribe(rerenderEntireTree);
+rerenderEntireTree(store.getState());
+store.subscribe(rerenderEntireTree);
 serviceWorker.unregister();
 
