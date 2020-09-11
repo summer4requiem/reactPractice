@@ -5,10 +5,11 @@ import MakePosts from '../Post/MakePosts';
 
 const Profile = (props) => {
   return (
-    <section  className="content" >
+    <section className="content" >
       <ProfileInfo />
-      <MakePosts posts={props.state.posts}  addPost = {props.addPost} updatePostFieldText= {props.updatePostFieldText}/>
+      <MakePosts newPostText={props.state.newPostText} posts={props.state.posts} dispatch={props.dispatch} />
     </section >
   )
 }
+
 export default Profile;

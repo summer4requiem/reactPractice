@@ -17,9 +17,7 @@ let store = {
                     likesCount: 14,
                 }
             ],
-
-            newPostText: ' ',
-
+            newPostText: '',
         },
 
         messagesPage: {
@@ -79,11 +77,11 @@ let store = {
 
         },
     },
+    _rerenderEntireTree() {},
 
-    getState(){
+    getState() {
         return this._state;
     },
-
 
     addPost() {
         let newPost = {
@@ -119,15 +117,31 @@ let store = {
         this._rerenderEntireTree(this._state);
     },
 
-    _rerenderEntireTree() {
-    },
+
 
     subscribe(observer) {
         this._rerenderEntireTree = observer;
+    },
+
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            let newPost = {
+                id: 5,
+                message: this._state.profilePage.newPostText,
+                likesCount: Math.floor(Math.random(2) * 100),
+            };
+
+            this._state.profilePage.posts.push(newPost);
+            this.updatePostFieldText('');
+            this._rerenderEntireTree(this._state);
+
+        } else if (action.type === 'UPDATE-NEW-TEXT') {
+            this._state.profilePage.newPostText = action.text;
+            this._rerenderEntireTree(this._state);
+        }
+
     }
-
 }
-
 
 export default store;
 window.store = store;
