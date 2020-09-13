@@ -1,4 +1,11 @@
+const ADD_POST = 'ADD-POST';
+const UPDATE_NEW_TEXT = 'UPDATE-NEW-TEXT';
+const UPDATE_MESSAGE_FIELD = 'UPDATE-MESSAGE-FIELD';
+const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE';
+
+
 let store = {
+
     _state: {
         profilePage: {
             posts: [{
@@ -77,7 +84,8 @@ let store = {
 
         },
     },
-    _rerenderEntireTree() {},
+    // _rerenderEntireTree() {
+    // },
 
     getState() {
         return this._state;
@@ -111,20 +119,17 @@ let store = {
         this._rerenderEntireTree(this._state);
     },
 
-
     updateMessageFieldText(text) {
         this._state.messagesPage.newMessageText = text;
         this._rerenderEntireTree(this._state);
     },
-
-
 
     subscribe(observer) {
         this._rerenderEntireTree = observer;
     },
 
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
+        if (action.type === ADD_POST) {
             let newPost = {
                 id: 5,
                 message: this._state.profilePage.newPostText,
@@ -135,11 +140,48 @@ let store = {
             this.updatePostFieldText('');
             this._rerenderEntireTree(this._state);
 
-        } else if (action.type === 'UPDATE-NEW-TEXT') {
+        } else if (action.type === UPDATE_NEW_TEXT) {
             this._state.profilePage.newPostText = action.text;
             this._rerenderEntireTree(this._state);
-        }
+        } else if (action.type === UPDATE_MESSAGE_FIELD) {
+            this._state.messagesPage.newMessageText = action.text;
+            this._rerenderEntireTree(this._state);
+        } else if (action.type === ADD_NEW_MESSAGE) {
+            let newMessage = {
+                id: 5,
+                message: this._state.messagesPage.newMessageText,
+            };
 
+            this._state.messagesPage.messages.push(newMessage);
+            this.updateMessageFieldText('');
+            this._rerenderEntireTree(this._state);
+        }
+    }
+}
+
+export const addPostActionCreater = () => {
+    return {
+        type: 'ADD-POST',
+    }
+}
+
+export const updateNewPostText = (newtext) => {
+    return {
+        type: 'UPDATE-NEW-TEXT',
+        text: newtext,
+    }
+}
+
+export const addNewMessageCreater = () => {
+    return {
+        type: 'ADD-NEW-MESSAGE',
+    }
+}
+
+export const updateNewMessageCreater = (newMessage) => {
+    return {
+        type: 'UPDATE-MESSAGE-FIELD',
+        text: newMessage,
     }
 }
 
