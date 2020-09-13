@@ -1,11 +1,15 @@
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_TEXT = 'UPDATE-NEW-TEXT';
+import profileReducer from './profile-reducer';
+import dialogsReducer from './dialogs-reducer';
+import sidebarReducer from './sidebar-reducer';
+
 const UPDATE_MESSAGE_FIELD = 'UPDATE-MESSAGE-FIELD';
 const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE';
 
+const ADD_POST = 'ADD-POST';
+const UPDATE_NEW_POST = 'UPDATE-NEW-POST';
+
 
 let store = {
-
     _state: {
         profilePage: {
             posts: [{
@@ -24,6 +28,7 @@ let store = {
                     likesCount: 14,
                 }
             ],
+
             newPostText: '',
         },
 
@@ -54,7 +59,6 @@ let store = {
                 }
             ],
 
-            newMessageText: ' ',
 
             dialogs: [{
                     id: 1,
@@ -82,10 +86,16 @@ let store = {
                 }
             ],
 
+            newMessageText: '',
+
         },
+
+        sidebarPage: [{
+
+        }]
     },
-    // _rerenderEntireTree() {
-    // },
+    _callSubscriber() {
+    },
 
     getState() {
         return this._state;
@@ -100,12 +110,12 @@ let store = {
 
         this._state.profilePage.posts.push(newPost);
         this.updatePostFieldText('');
-        this._rerenderEntireTree(this._state);
+        this._callSubscriber(this._state);
     },
 
     updatePostFieldText(text) {
         this._state.profilePage.newPostText = text;
-        this._rerenderEntireTree(this._state);
+        this._callSubscriber(this._state);
     },
 
     addMessage() {
@@ -116,19 +126,23 @@ let store = {
 
         this._state.messagesPage.messages.push(newMessage);
         this.updateMessageFieldText('');
-        this._rerenderEntireTree(this._state);
+        this._callSubscriber(this._state);
     },
 
     updateMessageFieldText(text) {
         this._state.messagesPage.newMessageText = text;
-        this._rerenderEntireTree(this._state);
+        this._callSubscriber(this._state);
     },
-
+ 
     subscribe(observer) {
-        this._rerenderEntireTree = observer;
+        this._callSubscriber = observer;
     },
 
     dispatch(action) {
+        // this._state.profilePage =  profileReducer(this._state.profilePage, action);
+        // this._state.messagesPage =  dialogsReducer(this._state.messagesPage, action);
+        // this._state.sidebarPage =  sidebarReducer(this._state.sidebarPage, action);
+        // this._callSubscriber(this._state)
         if (action.type === ADD_POST) {
             let newPost = {
                 id: 5,
@@ -138,14 +152,14 @@ let store = {
 
             this._state.profilePage.posts.push(newPost);
             this.updatePostFieldText('');
-            this._rerenderEntireTree(this._state);
+            this._callSubscriber(this._state);
 
-        } else if (action.type === UPDATE_NEW_TEXT) {
-            this._state.profilePage.newPostText = action.text;
-            this._rerenderEntireTree(this._state);
+        } else if (action.type === UPDATE_NEW_POST) {
+            this._state.profilePage.newPostText = action.newtext;
+            this._callSubscriber(this._state);
         } else if (action.type === UPDATE_MESSAGE_FIELD) {
             this._state.messagesPage.newMessageText = action.text;
-            this._rerenderEntireTree(this._state);
+            this._callSubscriber(this._state);
         } else if (action.type === ADD_NEW_MESSAGE) {
             let newMessage = {
                 id: 5,
@@ -154,7 +168,7 @@ let store = {
 
             this._state.messagesPage.messages.push(newMessage);
             this.updateMessageFieldText('');
-            this._rerenderEntireTree(this._state);
+            this._callSubscriber(this._state);
         }
     }
 }
@@ -167,8 +181,8 @@ export const addPostActionCreater = () => {
 
 export const updateNewPostText = (newtext) => {
     return {
-        type: 'UPDATE-NEW-TEXT',
-        text: newtext,
+        type: 'UPDATE-NEW-POST',
+        newtext: newtext,
     }
 }
 

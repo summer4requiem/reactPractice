@@ -10,14 +10,13 @@ import { BrowserRouter, Route } from "react-router-dom";
 
 
 const App = (props) => {
-
   return(
     <BrowserRouter>
     <div className="App">
       <Header />
       <Navigation state={props.state.messagesPage}/>
       <main className="main">
-        <Route path="/profile" render={() => <Profile state={props.state.profilePage}  dispatch = {props.dispatch} />} />
+      <Route path="/profile" render={() => <Profile state={props.state.profilePage}  dispatch = {props.dispatch} />} />
         <Route path="/news" render={() => <News />} />
         <Route path="/music" render={() => <Music />} />
         <Route exact path="/dialogs" render={() => <Dialogs state={props.state.messagesPage}  dispatch = {props.dispatch}/>} />

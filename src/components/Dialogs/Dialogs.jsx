@@ -5,8 +5,8 @@ import MessageItem from './MessageItem'
 import { addNewMessageCreater, updateNewMessageCreater } from '../../Redux/state';
 
 
-
 const Dialogs = (props) => {
+
   let dialogsElements = props.state.dialogs.map(d => <DialogItem name={d.name} id={d.id} />);
   let messageElements = props.state.messages.map(m => <MessageItem message={m.message} />);
 
@@ -17,6 +17,7 @@ const Dialogs = (props) => {
   let onMessageFieldChange = (eventObj) => {
     let text = eventObj.target.value;
     props.dispatch(updateNewMessageCreater(text));
+
   }
 
   return (

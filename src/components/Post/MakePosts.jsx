@@ -4,6 +4,7 @@ import s from "./Post.module.css"
 import { addPostActionCreater, updateNewPostText } from '../../Redux/state';
 
 const MakePosts = (props) => {
+
   let postElements = props.posts.map(p => <AddedPosts message={p.message} likesCount={p.likesCount} />);
 
   let onPostsSendBtn = () => {
@@ -20,7 +21,7 @@ const MakePosts = (props) => {
       <div className="posts">
         <label className="posts__header" htmlFor="post">My posts</label>
         <div className="posts__wrapper">
-          <textarea onChange={onPostChange} name="post" id="post" cols="30" rows="10" width="100%" value={props.newPostText} />
+        <textarea onChange={onPostChange} name="post" id="post" cols="30" rows="10" width="100%" value={props.newPostText} />
           <button onClick={onPostsSendBtn} className={s.postsSendBtn} type="submit">Post</button>
         </div>
       </div>
