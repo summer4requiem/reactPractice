@@ -1,12 +1,5 @@
 import profileReducer from './profile-reducer';
 import dialogsReducer from './dialogs-reducer';
-import sidebarReducer from './sidebar-reducer';
-
-const UPDATE_MESSAGE_FIELD = 'UPDATE-MESSAGE-FIELD';
-const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE';
-
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST = 'UPDATE-NEW-POST';
 
 
 let store = {
@@ -94,82 +87,53 @@ let store = {
 
         }]
     },
-    _callSubscriber() {
-    },
+    _callSubscriber() {},
 
     getState() {
         return this._state;
     },
 
-    addPost() {
-        let newPost = {
-            id: 5,
-            message: this._state.profilePage.newPostText,
-            likesCount: Math.floor(Math.random(2) * 100),
-        };
+    // addPost() {
+    //     let newPost = {
+    //         id: 5,
+    //         message: this._state.profilePage.newPostText,
+    //         likesCount: Math.floor(Math.random(2) * 100),
+    //     };
 
-        this._state.profilePage.posts.push(newPost);
-        this.updatePostFieldText('');
-        this._callSubscriber(this._state);
-    },
+    //     this._state.profilePage.posts.push(newPost);
+    //     this.updatePostFieldText('');
+    //     this._callSubscriber(this._state);
+    // },
 
-    updatePostFieldText(text) {
-        this._state.profilePage.newPostText = text;
-        this._callSubscriber(this._state);
-    },
+    // updatePostFieldText(text) {
+    //     this._state.profilePage.newPostText = text;
+    //     this._callSubscriber(this._state);
+    // },
 
-    addMessage() {
-        let newMessage = {
-            id: 5,
-            message: this._state.messagesPage.newMessageText,
-        };
+    // addMessage() {
+    //     let newMessage = {
+    //         id: 5,
+    //         message: this._state.messagesPage.newMessageText,
+    //     };
 
-        this._state.messagesPage.messages.push(newMessage);
-        this.updateMessageFieldText('');
-        this._callSubscriber(this._state);
-    },
+    //     this._state.messagesPage.messages.push(newMessage);
+    //     this.updateMessageFieldText('');
+    //     this._callSubscriber(this._state);
+    // },
 
-    updateMessageFieldText(text) {
-        this._state.messagesPage.newMessageText = text;
-        this._callSubscriber(this._state);
-    },
- 
+    // updateMessageFieldText(text) {
+    //     this._state.messagesPage.newMessageText = text;
+    //     this._callSubscriber(this._state);
+    // },
+
     subscribe(observer) {
         this._callSubscriber = observer;
     },
 
     dispatch(action) {
-        // this._state.profilePage =  profileReducer(this._state.profilePage, action);
-        // this._state.messagesPage =  dialogsReducer(this._state.messagesPage, action);
-        // this._state.sidebarPage =  sidebarReducer(this._state.sidebarPage, action);
-        // this._callSubscriber(this._state)
-        if (action.type === ADD_POST) {
-            let newPost = {
-                id: 5,
-                message: this._state.profilePage.newPostText,
-                likesCount: Math.floor(Math.random(2) * 100),
-            };
-
-            this._state.profilePage.posts.push(newPost);
-            this.updatePostFieldText('');
-            this._callSubscriber(this._state);
-
-        } else if (action.type === UPDATE_NEW_POST) {
-            this._state.profilePage.newPostText = action.newtext;
-            this._callSubscriber(this._state);
-        } else if (action.type === UPDATE_MESSAGE_FIELD) {
-            this._state.messagesPage.newMessageText = action.text;
-            this._callSubscriber(this._state);
-        } else if (action.type === ADD_NEW_MESSAGE) {
-            let newMessage = {
-                id: 5,
-                message: this._state.messagesPage.newMessageText,
-            };
-
-            this._state.messagesPage.messages.push(newMessage);
-            this.updateMessageFieldText('');
-            this._callSubscriber(this._state);
-        }
+        profileReducer(this._state.profilePage, action);
+        dialogsReducer(this._state.messagesPage, action);
+        this._callSubscriber(this._state);
     }
 }
 
