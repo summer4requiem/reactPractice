@@ -9,7 +9,7 @@
     padding: 2em 1em;
 }
 
-.postsSendBtn{
+.postsSendBtn {
     padding: 1em 2em;
     border: 0;
     background-color: #338F31;
@@ -17,8 +17,9 @@
 }
 
 .postRating {
-    font-weight: bold;
     display: flex;
+    font-size: 1.3em;
+    text-transform: initial;
     justify-content: space-between;
 }
 
@@ -29,4 +30,9 @@
 
 .posts__img {
     margin-bottom: 30px;
+}
+
+.postLikeSvg {
+    width: 30px;
+    height: 30px;
 }
