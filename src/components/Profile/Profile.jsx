@@ -2,7 +2,6 @@ import React from 'react';
 import ProfileInfo from "../ProfileInfo/ProfileInfo";
 import MakePosts from '../Post/MakePosts';
 
-
 const Profile = (props) => {
   return (
     <section className="content" >

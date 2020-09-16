@@ -88,13 +88,11 @@ let store = {
         }]
     },
     _callSubscriber() {
-        debugger;
     },
 
     getState() {
         return this._state;
     },
-
 
     subscribe(observer) {
         this._callSubscriber = observer;

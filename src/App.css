@@ -9,8 +9,6 @@ ul {
     outline: 1px ridge rgb(117 228 134);
 } */
 
-
-
 .App {
     font-size: 14px;
     display: grid;
@@ -19,8 +17,6 @@ ul {
     height: 100vh;
     grid-gap: 2vw;
 }
-
-
 
 .header {
     background-color: #45688e;
@@ -33,31 +29,6 @@ ul {
     background-color: aquamarine;
     height: 200px;
     width: 100%;
-
-}
-
-.posts {
-    grid-area: content;
-}
-
-.posts__header {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-bottom: 1em;
-}
-
-.posts__wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    padding: 1em;
-}
-
-.posts__wrapper textarea {
-    width: 100%;
-    resize: none;
-    height: 60px;
-    margin-right: 5px;
 }
 
 

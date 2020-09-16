@@ -12,7 +12,7 @@ const ProfileInfo = () => (
         <li className={s.descriptionListItem}><img src="https://sun9-12.userapi.com/c855524/v855524471/75883/Q_Zc64myPYY.jpg"  width="150px"  height="100px" alt=""/></li>
         <li className={s.descriptionListItem}>date of birdth: 4 june 1996</li>
         <li className={s.descriptionListItem}>city: Saint-Petersburg</li>
-        <li className={s.descriptionListItem}>Web-site: </li>
+        <li className={s.descriptionListItem}>Web-site:</li>
       </ul>
     </div>
   </section>

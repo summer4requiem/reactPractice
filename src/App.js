@@ -10,7 +10,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 
 
 const App = (props) => {
-  return(
+  return (
     <BrowserRouter>
     <div className="App">
       <Header />

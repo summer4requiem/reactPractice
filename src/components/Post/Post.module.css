@@ -3,7 +3,6 @@
 }
 
 .post {
-    margin-bottom: 2em;
     border-bottom: 1px solid #0000001f;
     margin-bottom: 2em;
     padding: 2em 1em;
@@ -27,7 +26,6 @@
     margin-bottom: 1em;
 }
 
-
 .posts__img {
     margin-bottom: 30px;
 }
@@ -36,3 +34,40 @@
     width: 30px;
     height: 30px;
 }
+
+.postsWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.postsWrapper textarea {
+    width: 100%;
+    resize: none;
+    height: 60px;
+    margin-right: 5px;
+}
+
+
+.posts {
+    grid-area: content;
+}
+
+.postsHeader {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 1em;
+    display: inline-block;
+}
+
+.postLikeSvg{
+    background-color: transparent;
+    border: none;
+    margin-right: 1em;
+}
+
+.postBtnWrapper{
+    display: flex;
+    align-items: center;
+}
+
