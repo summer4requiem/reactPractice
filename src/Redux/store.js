@@ -83,9 +83,7 @@ let store = {
 
         },
 
-        sidebarPage: [{
 
-        }]
     },
     _callSubscriber() {
     },

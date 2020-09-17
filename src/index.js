@@ -7,14 +7,14 @@ import store from './Redux/redux-store';
 
 
 let rerenderEntireTree = () => {
-    ReactDOM.render(<React.StrictMode><App state={store.getState()} dispatch={store.dispatch.bind(store)} /></React.StrictMode >, document.getElementById('root'));
+    ReactDOM.render(<React.StrictMode><App store={store} dispatch={store.dispatch.bind(store)} /></React.StrictMode >, document.getElementById('root'));
 };
 
 rerenderEntireTree(store);
 
 store.subscribe(() => {
+    debugger;
     let state = store.getState();
-    console.log(state);
     rerenderEntireTree(state);
 });
 
