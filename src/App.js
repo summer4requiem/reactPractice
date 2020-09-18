@@ -9,18 +9,17 @@ import { BrowserRouter, Route } from "react-router-dom";
 import NavigationContainer from './components/Navigation/NavigationContainer';
 
 
-const App = (props) => {
-  debugger;
+const App = () => {
   return (
     <BrowserRouter>
     <div className="App">
       <Header />
-      <NavigationContainer store={props.store}/>
+      <NavigationContainer/>
       <main className="main">
-      <Route path="/profile" render={() => <Profile store={props.store} />} />
+      <Route path="/profile" render={() => <Profile/>} />
         <Route path="/news" render={() => <News />} />
         <Route path="/music" render={() => <Music />} />
-        <Route exact path="/dialogs" render={() => <DialogsContainer store ={props.store}/>} />
+        <Route exact path="/dialogs" render={() => <DialogsContainer/>} />
       </main>
     </div >
   </BrowserRouter>

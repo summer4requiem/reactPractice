@@ -19,7 +19,7 @@ const FriendItem = (props) => {
 
 
 const Sidebar = (props) => {
-  let friendsItem = props.state.map((friend) => <FriendItem name={friend.name}  id={friend.id}/>)
+  let friendsItem = props.dialogs.map((friend) => <FriendItem name={friend.name}  id={friend.id}/>)
   return (
     <aside className={s.sideBarTitle}>
       <div>

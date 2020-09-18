@@ -12,7 +12,7 @@ const Navigation = (props) => {
                 <li className={s.navigationItem}><NavLink to="/news" activeClassName={s.activeLink}>News</NavLink></li>
                 <li className={s.navigationItem}><NavLink to="/dialogs" activeClassName={s.activeLink}>Message</NavLink></li>
             </ul>
-            <Sidebar state={props.store.dialogs} />
+            <Sidebar dialogs={props.dialogs} />
         </nav>
     )
 }

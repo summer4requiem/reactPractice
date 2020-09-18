@@ -20,7 +20,7 @@ const MakePosts = (props) => {
         <label className={s.postsHeader} htmlFor="post">My posts</label>
         <div className={s.postsWrapper}>
           <textarea onChange={onPostChange} name="post" id="post" cols="30" rows="10" width="100%" value={props.newPostText} />
-          <button onClick={onPostsSendBtn} className={s.postsSendBtn} type="submit">Post</button>
+          <button onClick={onPostsSendBtn} className={s.postsSendBtn} type="submit">post</button>
         </div>
       </div>
       {postElements}
