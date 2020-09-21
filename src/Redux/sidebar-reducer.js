@@ -17,11 +17,11 @@ let initialState = {
             name: 'Dymich'
         },
         {
-            id: 4,
+            id: 5,
             name: 'Yarick'
         },
         {
-            id: 4,
+            id: 6,
             name: 'Sveta'
         }
     ],

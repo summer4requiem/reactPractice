@@ -60,11 +60,11 @@ let initialState = {
             name: 'Dymich'
         },
         {
-            id: 4,
+            id: 5,
             name: 'Yarick'
         },
         {
-            id: 4,
+            id: 6,
             name: 'Sveta'
         }
     ],
@@ -72,29 +72,26 @@ let initialState = {
     newMessageText: '',
 }
 
-
 const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case UPDATE_MESSAGE_FIELD: {
-            let stateCopy = {...state};
-            stateCopy.newMessageText = action.text;
-            return stateCopy;
-        }
+        case UPDATE_MESSAGE_FIELD:
+            return {
+                ...state,
+                newMessageText: action.text,
+            }
+            case ADD_NEW_MESSAGE:
+                let newMessage = {
+                    id: 58,
+                    message: state.newMessageText,
+                };
+                return {
+                    ...state,
+                    messages: [...state.messages, newMessage],
+                        newMessageText: '',
+                }
 
-        case ADD_NEW_MESSAGE: {
-            let newMessage = {
-                id: 5,
-                message: state.newMessageText,
-            };
-            let stateCopy = {...state};
-            stateCopy.messages = [...state.messages];
-            stateCopy.messages.push(newMessage);
-            stateCopy.newMessageText = '';
-            return stateCopy;
-        }
-
-        default:
-            return state;
+                default:
+                    return state;
     }
 }
 

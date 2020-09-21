@@ -17,14 +17,13 @@ const FriendItem = (props) => {
   )
 }
 
-
 const Sidebar = (props) => {
-  let friendsItem = props.dialogs.map((friend) => <FriendItem name={friend.name}  id={friend.id}/>)
+  let friendsItem = props.dialogs.map((friend) => <FriendItem name={friend.name} key={friend.id}  id={friend.id}/>)
   return (
     <aside className={s.sideBarTitle}>
       <div>
         <p className={s.friensBar}>Friends</p>
-        <ul className={s.friensList}>
+        <ul className={s.friensList} >
         {friendsItem}
         </ul>
       </div>
