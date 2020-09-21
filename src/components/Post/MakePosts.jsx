@@ -3,7 +3,6 @@ import AddedPosts from "./AddedPosts";
 import s from "./Post.module.css";
 
 const MakePosts = (props) => {
-  debugger;
   let postElements = props.posts.map(p => <AddedPosts message={p.message} likesCount={p.likesCount} />);
 
   let onPostsSendBtn = () => {
