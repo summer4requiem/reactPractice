@@ -42,7 +42,6 @@ let initialState = {
         }
     ],
 
-
     dialogs: [{
             id: 1,
             name: 'Andrew'

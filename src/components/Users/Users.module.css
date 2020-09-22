@@ -1,0 +1,63 @@
+.userInfo img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.userInfo {
+    padding: 1em;
+    box-shadow: 3px 12px 30px -4px rgba(0, 0, 0, 0.75);
+    margin-right: 1em;
+    margin-bottom: 1em;
+}
+
+
+.usersWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.pageTitle {
+    margin: 0;
+    margin-bottom: 1em;
+}
+
+.userAvatar {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.userBioListItem {
+    font-size: 0.5em;
+    line-height: 12px;
+    color: #333333;
+}
+
+.unfollow {
+    width: 100%;
+    border-color: transparent;
+    background-color: #d3d9de
+}
+.follow {
+    background-color: #45688e;
+    width: 100%;
+    border-color: transparent;
+    color: #ffffff;
+}
+
+@media(min-width:650px) {
+    .userBioListItem {
+        font-size: 1em;
+        line-height: 21px;
+    }
+    .userInfo {
+        width: 27%;
+
+    }
+    .userInfo img{
+
+
+    }
+}

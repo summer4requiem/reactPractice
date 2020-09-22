@@ -11,6 +11,7 @@ const Navigation = (props) => {
                 <li className={s.navigationItem}><NavLink to="/music" activeClassName={s.activeLink}>Music</NavLink></li>
                 <li className={s.navigationItem}><NavLink to="/news" activeClassName={s.activeLink}>News</NavLink></li>
                 <li className={s.navigationItem}><NavLink to="/dialogs" activeClassName={s.activeLink}>Message</NavLink></li>
+                <li className={s.navigationItem}><NavLink to="/users" activeClassName={s.activeLink}>Find friends</NavLink></li>
             </ul>
             <Sidebar dialogs={props.dialogs} />
         </nav>

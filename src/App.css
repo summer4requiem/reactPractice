@@ -1,19 +1,18 @@
 ul {
-    text-transform: uppercase;
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-/* * {
+* {
     outline: 1px ridge rgb(117 228 134);
-} */
+}
 
 .App {
     font-size: 14px;
     display: grid;
     grid-template-rows: 70px 1fr;
-    grid-template-columns: 40% 1fr;
+    grid-template-columns: 140px 1fr;
     height: 100vh;
     grid-gap: 2vw;
 }

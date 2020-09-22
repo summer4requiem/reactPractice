@@ -7,6 +7,7 @@ import News from "./components/News/News";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import { BrowserRouter, Route } from "react-router-dom";
 import NavigationContainer from './components/Navigation/NavigationContainer';
+import UsersContainer from './components/Users/UsersContainer';
 
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
       <main className="main">
       <Route path="/profile" render={() => <Profile/>} />
         <Route path="/news" render={() => <News />} />
+        <Route path="/users" render={() => <UsersContainer />} />
         <Route path="/music" render={() => <Music />} />
         <Route exact path="/dialogs" render={() => <DialogsContainer/>} />
       </main>

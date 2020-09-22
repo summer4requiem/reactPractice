@@ -12,7 +12,7 @@
   margin: 0;
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   padding: 1em;
   grid-auto-flow: row;
 }
@@ -23,6 +23,7 @@
   color: #fff;
 }
 
+
 .friendsItem img {
   width: 35px;
   height: 35px;
@@ -32,4 +33,16 @@
   align-items: center;
   margin-bottom: 1em;
   margin-right: 1em;
+}
+
+@media(min-width:650px) {
+  .friensList{
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media(min-width:1150px) {
+  .friensList{
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
