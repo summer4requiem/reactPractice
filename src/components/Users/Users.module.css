@@ -15,6 +15,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    margin-bottom: 1em;
 }
 
 .pageTitle {
@@ -48,11 +49,31 @@
     color: #ffffff;
     padding: 0.4em;
 }
+.activePage{
+    font-weight: bold;
+}
+
+.usersPaginationList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    margin-bottom: 1em;
+}
+.usersPaginationList li{
+    margin-right: 1em;
+    cursor: pointer;
+}
 
 @media(min-width:650px) {
     .userBioListItem {
         font-size: 1em;
         line-height: 21px;
+    }
+
+    .usersWrapper {
+        margin-bottom: 2em;
+        font-weight: bold;
     }
 
     .userInfo {
