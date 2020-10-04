@@ -17,7 +17,7 @@ export const followAC = (userID) => ({
 
 let initialState = {
     users: [],
-    pageSize: 20,
+    pageSize: 100,
     totalUsersCount: 20,
     currentPage: 1,
 }
