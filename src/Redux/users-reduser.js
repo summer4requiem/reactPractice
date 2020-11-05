@@ -6,12 +6,12 @@ const SET_TOTAL_COUNT = 'SET-TOTAL-COUNT';
 const TOGGLE_FETCHING = 'TOGGLE-FETCHING';
 
 
-export const unfollowAC = (userID) => ({
+export const unfollow = (userID) => ({
     type: 'UNFOLLOW',
     userID: userID,
 });
 
-export const followAC = (userID) => ({
+export const follow = (userID) => ({
     type: 'FOLLOW',
     userID: userID
 });
@@ -24,23 +24,23 @@ let initialState = {
     isFetching: false,
 }
 
-export const setUsersAC = (users) => ({
+export const setUsers = (users) => ({
     type: 'SET-USERS',
     users: users
 });
 
 
-export const setTotalCountAC = (count) => ({
+export const setTotalCount = (count) => ({
     type: 'SET-TOTAL-COUNT',
     totalCount: count
 });
 
-export const changeCurrentPageAC = (page) => ({
+export const changeCurrentPage = (page) => ({
     type: 'CHANGE-USER-PAGE',
     currentPage: page
 });
 
-export const isFetchingAC = (isFetching) => ({
+export const isFetching = (isFetching) => ({
     type: 'TOGGLE-FETCHING',
     isFetching: isFetching
 });
@@ -99,7 +99,6 @@ const usersReducer = (state = initialState, action) => {
         }
 
         case TOGGLE_FETCHING: {
-            debugger;
             return { ...state, isFetching: action.isFetching}
         }
 
