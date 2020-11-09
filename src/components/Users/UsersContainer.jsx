@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import UsersAPIComponent from "./UsersAPIComponent";
-import { follow, unfollow, setUsers, changeCurrentPage, setTotalCount, isFetching } from '../../Redux/users-reduser';
+import { follow, unfollow, setUsers, changeCurrentPage, setTotalCount, isFetching } from '../../Redux/users-reducer';
 
 const mapStateToProps = (state) => {
     return {

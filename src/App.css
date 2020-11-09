@@ -23,14 +23,6 @@ ul {
     grid-gap: 2vw;
 }
 
-
-
-.header {
-    background-color: var(--main-color);
-    grid-column-start: 1;
-    grid-column-end: 3;
-    padding: 0.5em;
-}
 .preloader{
     width: 40px;
     height: 45px;

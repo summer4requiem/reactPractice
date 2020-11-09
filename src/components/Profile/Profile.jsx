@@ -3,7 +3,6 @@ import ProfileInfo from "../ProfileInfo/ProfileInfo";
 import PostsContainer from '../Post/PostsContainer';
  
 const Profile = (props) => {
-  debugger;
   return (
     <section className="content">
       <ProfileInfo profile={props.profile} setUserProfile = {props.setUserProfile} />

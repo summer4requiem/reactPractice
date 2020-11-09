@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from "./components/Header/Header";
+import HeaderContainer from "./components/Header/HeaderContainer";
 import './App.css';
 import Music from "./components/Music/Music";
 import News from "./components/News/News";
@@ -13,7 +13,7 @@ const App = () => {
   return (
     <BrowserRouter>
     <div className="App">
-      <Header />
+      <HeaderContainer />
       <NavigationContainer/>
       <main className="main">
       <Route path="/profile/:userId" render={() =><ProfileContainer/>} />
