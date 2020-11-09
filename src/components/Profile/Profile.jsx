@@ -4,9 +4,9 @@ import PostsContainer from '../Post/PostsContainer';
 
 const Profile = (props) => {
   return (
-    <section className="content" >
-      <ProfileInfo />
-      <PostsContainer store={props.store} />
+    <section className="content">
+      <ProfileInfo profile={props.profile} />
+      <PostsContainer profile={props.profile} store={props.store} />
     </section >
   )
 }

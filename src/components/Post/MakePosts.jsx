@@ -3,15 +3,16 @@ import AddedPosts from "./AddedPosts";
 import s from "./Post.module.css";
 
 const MakePosts = (props) => {
-  let postElements = props.posts.map(p => <AddedPosts message={p.message} key={p.id} likesCount={p.likesCount} />);
+
+  let postElements = props.posts.map(p => <AddedPosts  message={p.message} key={p.id} likesCount={p.likesCount} />);
 
   let onPostsSendBtn = () => {
     props.addPost();
   }
 
   let onPostChange = (eventObj) => {
-    let newtext = eventObj.target.value;
-    props.updateNewPostText(newtext);
+    let newText = eventObj.target.value;
+    props.updateNewPostText(newText);
   }
 
   return (
@@ -19,7 +20,7 @@ const MakePosts = (props) => {
       <div className={s.posts}>
         <label className={s.postsHeader} htmlFor="post">My posts</label>
         <div className={s.postsWrapper}>
-          <textarea placeholder="What's happening ?" onChange={onPostChange} name="post" id="post" cols="30" rows="10" width="100%" value={props.newPostText} />
+          <textarea placeholder="What's happening ?" onChange={onPostChange} name="post" id="post" cols="30" rows="10" value={props.newPostText} />
           <button onClick={onPostsSendBtn} className={s.postsSendBtn} type="submit">post</button>
         </div>
       </div>
@@ -28,4 +29,4 @@ const MakePosts = (props) => {
   )
 };
 
-export default MakePosts; 
+export default MakePosts;

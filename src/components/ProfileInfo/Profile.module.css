@@ -1,4 +1,17 @@
 .descriptionListItem {
     margin-bottom: 0.5em;
 }
-
+.descriptionWrapper{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: var(--main-background);
+    padding: 2em;
+    margin-bottom: 3em;
+}
+.descriptionImg{
+    margin-right: 2em;
+}
+.contactsListItem{
+    line-height: 2em;
+}

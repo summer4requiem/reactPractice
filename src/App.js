@@ -1,14 +1,13 @@
 import React from 'react';
 import Header from "./components/Header/Header";
 import './App.css';
-import Profile from "./components/Profile/Profile";
 import Music from "./components/Music/Music";
 import News from "./components/News/News";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import { BrowserRouter, Route } from "react-router-dom";
 import NavigationContainer from './components/Navigation/NavigationContainer';
 import UsersContainer from './components/Users/UsersContainer';
-
+import ProfileContainer from "./components/Profile/ProfileContainer";
 
 const App = () => {
   return (
@@ -17,7 +16,7 @@ const App = () => {
       <Header />
       <NavigationContainer/>
       <main className="main">
-      <Route path="/profile" render={() => <Profile/>} />
+      <Route exact path="/profile" render={() =><ProfileContainer/>} />
         <Route path="/news" render={() => <News />} />
         <Route path="/users" render={() => <UsersContainer />} />
         <Route path="/music" render={() => <Music />} />
@@ -26,6 +25,6 @@ const App = () => {
     </div >
   </BrowserRouter>
   );
-} 
+}
 
 export default App;

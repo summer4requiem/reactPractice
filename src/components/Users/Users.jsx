@@ -1,6 +1,7 @@
 import React from 'react';
 import s from "./Users.module.css"
 import imgNone from '/Users/summer_requiem/Dev/my-app/src/components/Users/default-avatar-profile-icon-vector-18942381.jpg'
+import { NavLink } from 'react-router-dom';
 
 const Users = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -8,7 +9,7 @@ const Users = (props) => {
 
     for (let index = 1; index <= pagesCount; index++) {
         pages.push(index);
-    };
+    }
 
     return <section className={s.users}>
         <ol className={s.usersPaginationList}>
@@ -19,7 +20,9 @@ const Users = (props) => {
                 props.users.map(u =>
                     <div key={u.id} className={s.userInfo}>
                         <div className={s.userAvatar}>
-                            <img src={u.photos.small !== null ? u.photos.small : imgNone} alt="Avatar" />
+                            <NavLink to={`/profile/` + u.id}>
+                                <img src={u.photos.small !== null ? u.photos.small : imgNone} alt="Avatar" />
+                            </NavLink>
                             <div className={s.userBio}>
                                 <ul className={s.userBioList}>
                                     <li className={s.userBioListItem}>{u.stats}</li>

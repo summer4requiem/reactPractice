@@ -1,7 +1,6 @@
 import profileReducer from './profile-reducer';
 import dialogsReducer from './dialogs-reducer';
 
-
 let store = {
     _state: {
         profilePage: {
@@ -78,11 +77,8 @@ let store = {
                     name: 'Sveta'
                 }
             ],
-
             newMessageText: '',
-
         },
-
 
     },
     _callSubscriber() {
