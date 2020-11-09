@@ -2,7 +2,9 @@ import React from 'react';
 import s from "./Profile.module.css"
 
 const ProfileInfo = (props) => {
+    props.setUserProfile(props.profile);
     if (!props.profile) {
+
         return (
             <div>Загрузка...</div>
         )

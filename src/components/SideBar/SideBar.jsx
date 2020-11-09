@@ -2,7 +2,6 @@ import React from 'react';
 import s from './SideBar.module.css';
 import { NavLink } from 'react-router-dom';
 
-
 const FriendItem = (props) => {
   let path = "/dialogs/" + props.id;
   return (
