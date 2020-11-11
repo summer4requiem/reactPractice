@@ -29,7 +29,6 @@ export const setUsers = (users) => ({
     users: users
 });
 
-
 export const setTotalCount = (count) => ({
     type: 'SET-TOTAL-COUNT',
     totalCount: count

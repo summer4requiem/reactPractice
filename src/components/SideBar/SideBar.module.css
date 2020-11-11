@@ -3,8 +3,11 @@
 }
 
 .friensBar {
-  background-color: aliceblue;
+  background-color: rgb(253, 253, 253);
   margin: 0;
+  padding: 1em;
+  color: var(--main-color);
+  font-weight: bold;
 }
 
 .friensList {
@@ -35,13 +38,13 @@
 }
 
 @media(min-width:650px) {
-  .friensList{
+  .friensList {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media(min-width:1150px) {
-  .friensList{
+  .friensList {
     grid-template-columns: repeat(4, 1fr);
   }
 }

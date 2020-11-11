@@ -1,11 +1,11 @@
-import React from "react"
-import * as axios from 'axios'
+import React from "react";
+import * as axios from 'axios';
 import Header from './Header';
 import { connect } from "react-redux";
 import {setAuthUserData} from "../../Redux/auth-reducer";
 
 class HeaderContainer extends React.Component {
-  componentDidMount() {
+  componentDidMount() { // without withCredentials: true, cookies are to be ignored in response
     axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {withCredentials: true})
       .then(response => {
         let {id, email, login} = response.data.data;
