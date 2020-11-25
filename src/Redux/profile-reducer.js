@@ -1,3 +1,4 @@
+import { ProfileAPI} from '../API/api';
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST = 'UPDATE-NEW-POST';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
@@ -7,7 +8,6 @@ export const addPost = () => {
         type: 'ADD-POST',
     }
 }
-
 export const updateNewPostText = (newText) => {
     return {
         type: 'UPDATE-NEW-POST',
@@ -24,10 +24,10 @@ export const setUserProfile = (profile) => {
 
 let initialState = {
     posts: [{
-        message: 'hi, how are you',
-        id: 1,
-        likesCount: 11,
-    },
+            message: 'hi, how are you',
+            id: 1,
+            likesCount: 11,
+        },
         {
             message: 'my second post',
             id: 2,
@@ -74,6 +74,12 @@ const profileReducer = (state = initialState, action) => {
         default:
             return state;
     }
+}
+
+export const getProfileThunkCreator = (userId) => (dispatch) => {
+    ProfileAPI.getProfile(userId).then(response => {
+        dispatch(setUserProfile(response.data));
+    });
 }
 
 export default profileReducer;

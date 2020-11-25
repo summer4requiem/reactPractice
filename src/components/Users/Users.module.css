@@ -19,8 +19,7 @@
 }
 
 .pageTitle {
-    margin: 0;
-    margin-bottom: 1em;
+    margin: 0 0 1em;
 }
 
 .userAvatar {
@@ -49,17 +48,19 @@
     color: #ffffff;
     padding: 0.4em;
 }
+button:disabled,button[disabled]{
+    opacity: 0.2;;
+}
+
 .activePage{
     font-weight: bold;
 }
-
 .usersPaginationList {
-    margin: 0;
     padding: 0;
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 1em;
+    margin: 0 0 1em;
 }
 .usersPaginationList li{
     margin-right: 1em;
@@ -80,6 +81,5 @@
     .userInfo {
         width: 27%;
     }
-
     /* .userInfo img {} */
 }

@@ -8,7 +8,7 @@ export const addNewMessageCreater = () => {
     }
 }
 
-export const updateNewMessageCreater = (newMessage) => {
+export const updateNewMessageСreator = (newMessage) => {
     return {
         type: 'UPDATE-MESSAGE-FIELD',
         text: newMessage,
@@ -93,7 +93,5 @@ const dialogsReducer = (state = initialState, action) => {
                     return state;
     }
 }
-
-
 
 export default dialogsReducer;

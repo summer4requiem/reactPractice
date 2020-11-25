@@ -1,48 +1,106 @@
+import {
+    UsersAPI
+} from "../API/api";
+
 const UNFOLLOW = 'UNFOLLOW';
 const FOLLOW = 'FOLLOW';
 const SET_USERS = 'SET-USERS';
 const CHANGE_USER_PAGE = 'CHANGE-USER-PAGE';
 const SET_TOTAL_COUNT = 'SET-TOTAL-COUNT';
 const TOGGLE_FETCHING = 'TOGGLE-FETCHING';
-
+const TOGGLE_FOLLOWING = 'TOGGLE-FOLLOWING';
 
 export const unfollow = (userID) => ({
-    type: 'UNFOLLOW',
+    type: UNFOLLOW,
     userID: userID,
 });
 
 export const follow = (userID) => ({
-    type: 'FOLLOW',
+    type: FOLLOW,
     userID: userID
 });
+
+export const setUsers = (users) => ({
+    type: SET_USERS,
+    users: users
+});
+
+export const setTotalCount = (count) => ({
+    type: SET_TOTAL_COUNT,
+    totalCount: count
+});
+
+export const changeCurrentPage = (page) => ({
+    type: CHANGE_USER_PAGE,
+    currentPage: page
+});
+
+export const toggleFetching = (isPageLoading) => ({
+    type: TOGGLE_FETCHING,
+    isPageLoading: isPageLoading
+});
+
+export const toggleFollowing = (isDisabledBtn, userId) => ({
+    type: TOGGLE_FOLLOWING,
+    userId: userId,
+    isPageLoading: isDisabledBtn,
+});
+
+//Thunk - засетает пользователей в store
+export const getUsersThunkCreator = (currentPage, pageSize) => {
+    return dispatch => {
+        dispatch(toggleFetching(true));
+        if (initialState.users.length === 0) {
+            UsersAPI.getUsers(currentPage, pageSize).then(data => {
+                dispatch(toggleFetching(false));
+                dispatch(setUsers(data.items));
+                dispatch(setTotalCount(data.totalCount));
+            });
+        }
+    }
+}
+
+export const changePageThunkCreator = (pageNumber, pageSize) => {
+    return dispatch => {
+            dispatch(toggleFetching(true));
+            // dispatch(changePage(pageNumber));
+            UsersAPI.getUsers(pageNumber, pageSize).then(data => {
+                dispatch(toggleFetching(false));
+                dispatch(setUsers(data.items));
+            });
+}
+}
+
+
+export const getFollowThunkCreator = (userId) => {
+    return dispatch => {
+        dispatch(toggleFollowing(true, userId));
+        UsersAPI.followUser(userId).then(() => {
+            dispatch(follow(userId));
+        });
+        dispatch(toggleFollowing(false, userId));
+    }
+}
+
+
+export const getUnFollowThunkCreator = (userId) => {
+    return dispatch => {
+        dispatch(toggleFollowing(true, userId));
+        UsersAPI.unFollowUser(userId).then(() => {
+            dispatch(unfollow(userId));
+        })
+        dispatch(toggleFollowing(false, userId));
+    }
+}
 
 let initialState = {
     users: [],
     pageSize: 100,
     totalUsersCount: 20,
     currentPage: 1,
-    isFetching: false,
+    isPageLoading: false,
+    currentFollowUsersId: [],
 }
-
-export const setUsers = (users) => ({
-    type: 'SET-USERS',
-    users: users
-});
-
-export const setTotalCount = (count) => ({
-    type: 'SET-TOTAL-COUNT',
-    totalCount: count
-});
-
-export const changeCurrentPage = (page) => ({
-    type: 'CHANGE-USER-PAGE',
-    currentPage: page
-});
-
-export const isFetching = (isFetching) => ({
-    type: 'TOGGLE-FETCHING',
-    isFetching: isFetching
-});
 
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -60,7 +118,6 @@ const usersReducer = (state = initialState, action) => {
                 }),
             }
         }
-
         case UNFOLLOW: {
             return {
                 ...state,
@@ -75,7 +132,6 @@ const usersReducer = (state = initialState, action) => {
                 }),
             }
         }
-
         case SET_USERS: {
             return {
                 ...state,
@@ -98,13 +154,23 @@ const usersReducer = (state = initialState, action) => {
         }
 
         case TOGGLE_FETCHING: {
-            return { ...state, isFetching: action.isFetching}
+            return {
+                ...state,
+                isPageLoading: action.isPageLoading
+            }
+        }
+
+
+        case TOGGLE_FOLLOWING: {
+            return {
+                ...state,
+                currentFollowUsersId: action.isPageLoading ? [...state.currentFollowUsersId, action.userId] : state.currentFollowUsersId.filter(id => id !== action.userId),
+            }
         }
 
         default:
             return state;
     }
 }
-
 
 export default usersReducer;

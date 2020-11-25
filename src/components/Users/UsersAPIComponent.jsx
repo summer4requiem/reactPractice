@@ -1,44 +1,31 @@
 import React from 'react';
-import Users from './Users'
-import * as axios from 'axios'
+import Users from './Users';
 import Preloader from './preloader';
-
 
 class UsersAPIComponent extends React.Component {
     componentDidMount() {
-        this.props.isFetching(true);
-        if (this.props.users.length === 0) {
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`,
-                {
-                    withCredentials: true,
-                }).then(response => {
-                    this.props.isFetching(false);
-                    this.props.setTotalCount(response.data.totalCount);
-                    this.props.setUsers(response.data.items);
-                });
-        }
+        this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize);
     }
 
     changePageOnClick = (pageNumber) => {
-        this.props.isFetching(true);
-        this.props.changePage(pageNumber);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(response => {
-            this.props.isFetching(false);
-            this.props.setUsers(response.data.items);
-        });
+        this.props.changePageThunkCreator(this.props.pageSize, pageNumber);
     }
 
     render() {
         return <>
-            { this.props.isFetching ?
-                <Preloader />
-                : null}
-            <Users totalUsersCount={this.props.totalUsersCount}
-                pageSize={this.props.pageSize}
-                users={this.props.users}
-                unfollow={this.props.unfollow}
-                follow={this.props.follow}
-                changePageOnClick={this.changePageOnClick}
+            { this.props.isPageLoading ?
+                <Preloader/>
+                : null }
+            <Users totalUsersCount={ this.props.totalUsersCount }
+                   pageSize={ this.props.pageSize }
+                   users={ this.props.users }
+                   unfollow={ this.props.unfollow }
+                   follow={ this.props.follow }
+                   changePageOnClick={ this.changePageOnClick }
+                   currentFollowUsersId={ this.props.currentFollowUsersId }
+                   getUnFollowThunkCreator = {this.props.getUnFollowThunkCreator}
+                   getFollowThunkCreator = {this.props.getFollowThunkCreator}
+                   
             />
         </>
     }
