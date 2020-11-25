@@ -8,6 +8,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import NavigationContainer from './components/Navigation/NavigationContainer';
 import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from "./components/Profile/ProfileContainer";
+import Login from './components/Login/Login';
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/news" render={() => <News />} />
         <Route path="/users" render={() => <UsersContainer />} />
         <Route path="/music" render={() => <Music />} />
+        <Route path="/login" render={() => <Login />} />
         <Route exact path="/dialogs" render={() => <DialogsContainer/>} />
       </main>
     </div >
