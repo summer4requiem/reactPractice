@@ -9,9 +9,22 @@
     padding: 2em;
     margin-bottom: 3em;
 }
+
+.descriptionListItemStatus{
+    padding:  1em 0;
+    border-bottom: 1px solid #000;
+    margin-bottom: 1em;
+    text-align: right;
+}
+
 .descriptionImg{
     margin-right: 2em;
 }
 .contactsListItem{
     line-height: 2em;
 }
+
+.description{
+    padding: 1em 0;
+} 
+   

@@ -1,21 +1,21 @@
 import React from 'react';
+import Preloader from '../Users/preloader';
 import s from "./Profile.module.css"
+import ProfileStatus from './ProfileStatus';
 
 const ProfileInfo = (props) => {
     props.setUserProfile(props.profile);
     if (!props.profile) {
-
-        return (
-            <div>Загрузка...</div>
-        )
+        return <Preloader/>
     }
+
     return (
         <section className={ s.description }>
             <div className={ s.descriptionBlock }>
                 <h1 className={ s.descriptionHeader }>{ props.profile.fullName }</h1>
                 <div className={s.descriptionWrapper}>
                     <ul className={ s.descriptionImg }>
-                        <li className={ s.descriptionListItem }>{ props.profile.aboutMe }</li>
+                        <ProfileStatus status = {props.profile.aboutMe} />
                         <li className={ s.descriptionListItem }><img src={ props.profile.photos.large } width="200px" height="220px" alt=""/></li>
                     </ul>
                     <ul className={ s.contactsList }>

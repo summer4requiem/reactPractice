@@ -17,18 +17,16 @@ class ProfileContainer extends React.Component {
 
     render() {
         return (
-            <Profile {...this.props} />
+            <Profile {...this.props} profile={this.props.profile}/>
         )
     }
 }
-
 
 const mapStateToProps = (state) => {
     return {
         profile: state.profilePage.profile,
     }
 }
-
 
 export default compose(
     connect(mapStateToProps, { getProfileThunkCreator }),
