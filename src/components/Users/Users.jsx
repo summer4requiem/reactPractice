@@ -12,7 +12,6 @@ const Users = (props) => {
     for (let index = 1; index <= pagesCount; index++) {
         pages.push(index);
     }
-
     return <section className={s.users}>
         <ol className={s.usersPaginationList}>
             {pages.map((p) => <li onClick={() => {

@@ -25,7 +25,6 @@ class UsersAPIComponent extends React.Component {
                    currentFollowUsersId={ this.props.currentFollowUsersId }
                    getUnFollowThunkCreator = {this.props.getUnFollowThunkCreator}
                    getFollowThunkCreator = {this.props.getFollowThunkCreator}
-                   
             />
         </>
     }

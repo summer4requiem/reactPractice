@@ -3,15 +3,12 @@ import UsersAPIComponent from "./UsersAPIComponent";
 import {
     follow,
     unfollow,
-    setUsers,
-    // changeCurrentPage,
-    setTotalCount,
-    toggleFetching,
     getUsersThunkCreator,
     getUnFollowThunkCreator,
     getFollowThunkCreator,
     changePageThunkCreator
 } from '../../Redux/users-reducer';
+import { compose } from "redux";
 
 const mapStateToProps = (state) => {
     return {
@@ -24,17 +21,10 @@ const mapStateToProps = (state) => {
     }
 }
 
-const UsersContainer = connect(mapStateToProps, {
-    // mapDispatchToProps
-    follow: follow,
-    unfollow: unfollow,
-    setUsers: setUsers,
-    // changePage: changeCurrentPage,
-    setTotalCount: setTotalCount,
-    toggleFetching: toggleFetching,
-    getUsersThunkCreator: getUsersThunkCreator,
-    getUnFollowThunkCreator: getUnFollowThunkCreator,
-    getFollowThunkCreator: getFollowThunkCreator,
-    changePageThunkCreator,
-})(UsersAPIComponent);
-export default UsersContainer;
+
+export default compose(
+    connect(mapStateToProps, {
+        follow, unfollow, getUsersThunkCreator, getUnFollowThunkCreator,
+        getFollowThunkCreator, changePageThunkCreator,
+    }))
+    (UsersAPIComponent);
