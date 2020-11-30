@@ -11,15 +11,15 @@ const axiosInstance = axios.create({
 
 export const UsersAPI = {
     getUsers: (currentPage = 1, pageSize = 10) => {
-        return axiosInstance.get(`users?page=${currentPage}&count=${pageSize}`, {}).then(response => response.data);
+        return axiosInstance.get(`users?page=${currentPage}&count=${pageSize}`).then(response => response.data);
     },
     followUser: (userId) => {
-        return axiosInstance.post(`follow/${userId}`, {}).then(response => {
+        return axiosInstance.post(`follow/${userId}`).then(response => {
             return response.data.resultCode === 0 ? response.data : ``;
         });
     },
     unFollowUser: (userId) => {
-        return axiosInstance.delete(`follow/${userId}`, {}).then(response => {
+        return axiosInstance.delete(`follow/${userId}`).then(response => {
             return response.data.resultCode === 0 ? response.data : ``;
         });
     },
@@ -34,5 +34,13 @@ export const AuthAPI = {
 export const ProfileAPI = {
     getProfile: (userId) => {
         return axiosInstance.get(`profile/${userId}`, {});
+    },
+    getStatus: (userId) => {
+        return axiosInstance.get(`profile/status/${userId}`);
+    },
+    updateStatus: (status) => {
+        return axiosInstance.put(`profile/status/`, {
+            status: status
+        });
     }
 }

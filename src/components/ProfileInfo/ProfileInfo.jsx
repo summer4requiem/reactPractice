@@ -15,7 +15,7 @@ const ProfileInfo = (props) => {
                 <h1 className={ s.descriptionHeader }>{ props.profile.fullName }</h1>
                 <div className={s.descriptionWrapper}>
                     <ul className={ s.descriptionImg }>
-                        <ProfileStatus status = {props.profile.aboutMe} />
+                        <ProfileStatus status = {props.status} setStatus = {props.setStatus} updateUserStatus = {props.updateUserStatus} />
                         <li className={ s.descriptionListItem }><img src={ props.profile.photos.large } width="200px" height="220px" alt=""/></li>
                     </ul>
                     <ul className={ s.contactsList }>

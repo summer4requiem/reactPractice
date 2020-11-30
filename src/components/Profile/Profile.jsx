@@ -5,7 +5,7 @@ import PostsContainer from '../Post/PostsContainer';
 const Profile = (props) => {
   return (
     <section className="content">
-      <ProfileInfo profile={props.profile} setUserProfile={props.getProfileThunkCreator} />
+      <ProfileInfo  updateUserStatus = {props.updateUserStatus}  status = {props.status}  profile={props.profile} setUserProfile={props.getProfile}/>
       <PostsContainer profile={props.profile} store={props.store} />
     </section>
   )
