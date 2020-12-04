@@ -1,6 +1,7 @@
 // DAL LEVEL
 import * as axios from 'axios';
 
+
 const axiosInstance = axios.create({
     withCredentials: true,
     baseURL: `https://social-network.samuraijs.com/api/1.0/`,
@@ -27,13 +28,29 @@ export const UsersAPI = {
 
 export const AuthAPI = {
     getAuth: () => {
-        return axiosInstance.get(`auth/me`, {});
+        return axiosInstance.get(`auth/me`);
+    },
+
+    logIn: (email, password, rememberMe, captcha) => {
+        let params = {
+            email,
+            password,
+            rememberMe,
+            captcha,
+        }
+        return axiosInstance.post(`auth/login`, params).then(response => {
+            return response.data.resultCode === 0 ? response.data : ``;
+        })
+    },
+    
+    logOut: () => {
+        return axiosInstance.delete(`auth/login`);
     }
 }
 
 export const ProfileAPI = {
     getProfile: (userId) => {
-        return axiosInstance.get(`profile/${userId}`, {});
+        return axiosInstance.get(`profile/${userId}`);
     },
     getStatus: (userId) => {
         return axiosInstance.get(`profile/status/${userId}`);

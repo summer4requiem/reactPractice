@@ -71,7 +71,6 @@ export const changePageThunkCreator = (pageNumber, pageSize) => {
 }
 }
 
-
 export const getFollowThunkCreator = (userId) => {
     return dispatch => {
         dispatch(toggleFollowing(true, userId));
@@ -81,7 +80,6 @@ export const getFollowThunkCreator = (userId) => {
         dispatch(toggleFollowing(false, userId));
     }
 }
-
 
 export const getUnFollowThunkCreator = (userId) => {
     return dispatch => {

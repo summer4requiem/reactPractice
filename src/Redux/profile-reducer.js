@@ -4,7 +4,7 @@ ProfileAPI
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST = 'UPDATE-NEW-POST';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
-const SET_USER_STATUS = 'SET-USER-STATS';
+const SET_USER_STATUS = 'SET-USER-STATUS';
 
 export const addPost = () => {
     return {
@@ -96,7 +96,6 @@ const profileReducer = (state = initialState, action) => {
 }
 
 // thunks 
-
 export const getProfile = (userId) => (dispatch) => {
     ProfileAPI.getProfile(userId)
         .then(response => {

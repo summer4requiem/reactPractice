@@ -4,7 +4,7 @@ import s from "./Profile.module.css"
 class ProfileStatus extends React.Component {
     state = {
         idEditMode: false,
-        status: this.props.status, // первоначально хватает статус из пропсов
+        status: this.props.status,
     }
 
     activateEditMode = () => {
@@ -25,6 +25,14 @@ class ProfileStatus extends React.Component {
         this.setState({
             status: text,
         })
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.status !== this.props.status) {
+            this.setState({
+                status: this.props.status,
+            })
+        }
     }
 
     render() {
