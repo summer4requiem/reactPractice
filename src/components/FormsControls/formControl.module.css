@@ -1,0 +1,17 @@
+.error {
+   border-color: red;
+}
+
+.errorMessage {
+    color: red;
+    font-size: 1em;
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+}
+
+.loginInput {
+    padding: 0.55em 1em;
+    border: 2px solid var(--main-color);
+    border-radius: 3px;
+}

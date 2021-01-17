@@ -44,13 +44,7 @@
 }
 
 .dialogsSend {
-    /* width: 100%; */
-    grid-column-start: 2;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1em;
-    background-color: #d3d9de;
+    background-color: #d3d9de57;
 }
 
 .dialogsSendTextarea {

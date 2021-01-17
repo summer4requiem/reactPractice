@@ -36,18 +36,11 @@
 
 .unfollow {
     width: 100%;
-    border-color: transparent;
-    background-color: #d3d9de;
-    padding: 0.4em;
+}
+.follow {
+    width: 100%;
 }
 
-.follow {
-    background-color: var(--main-color);
-    width: 100%;
-    border-color: transparent;
-    color: #ffffff;
-    padding: 0.4em;
-}
 button:disabled,button[disabled]{
     opacity: 0.2;;
 }

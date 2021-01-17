@@ -12,6 +12,7 @@ class UsersAPIComponent extends React.Component {
     }
 
     render() {
+        console.log(`render users`);
         return <>
             { this.props.isPageLoading ?
                 <Preloader/>
@@ -22,7 +23,7 @@ class UsersAPIComponent extends React.Component {
                    unfollow={ this.props.unfollow }
                    follow={ this.props.follow }
                    changePageOnClick={ this.changePageOnClick }
-                   currentFollowUsersId={ this.props.currentFollowUsersId }
+                   followingUserProgress={ this.props.followingUserProgress }
                    getUnFollowThunkCreator = {this.props.getUnFollowThunkCreator}
                    getFollowThunkCreator = {this.props.getFollowThunkCreator}
             />

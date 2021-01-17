@@ -3,13 +3,24 @@ ul {
     margin: 0;
     padding: 0;
 }
+
 /*
 * {
     outline: 1px ridge rgb(117 228 134);
 } */
 
+.common_form_error {
+    color: #ffffff;
+    padding: 1em;
+    background-color: red;
+    text-transform: uppercase;
+    font-size: 1em;
+    text-align: center;
+    font-weight: bold;
+}
+
 :root {
-    --main-color: #45688e;
+    --main-color:#3f51b5;
     --main-gray: #d3d9de;
     --main-background: #d3d9de70;
   }

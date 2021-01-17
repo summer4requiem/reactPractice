@@ -9,24 +9,44 @@ import NavigationContainer from './components/Navigation/NavigationContainer';
 import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import Login from './components/Login/Login';
+import { initializeApp } from './Redux/app-reducer';
+import { connect } from 'react-redux';
+import Preloader from './components/Users/preloader';
 
-const App = () => {
-  return (
-    <BrowserRouter>
-    <div className="App">
-      <HeaderContainer />
-      <NavigationContainer/>
-      <main className="main">
-      <Route path="/profile/:userId?" render={() =><ProfileContainer/>} />
-        <Route path="/news" render={() => <News />} />
-        <Route path="/users" render={() => <UsersContainer />} />
-        <Route path="/music" render={() => <Music />} />
-        <Route path="/login" render={() => <Login />} />
-        <Route exact path="/dialogs" render={() => <DialogsContainer/>} />
-      </main>
-    </div >
-  </BrowserRouter>
-  );
+class App extends React.Component {
+  componentDidMount() {
+    this.props.initializeApp();
+  }
+  render() {
+    if (!this.props.initialised) {
+      return (
+        <Preloader />
+      )
+    }
+    return (
+      <BrowserRouter>
+        <div className="App">
+          <HeaderContainer />
+          <NavigationContainer />
+          <main className="main">
+            <Route path="/profile/:userId?" render={() => <ProfileContainer />} />
+            <Route path="/news" render={() => <News />} />
+            <Route path="/users" render={() => <UsersContainer />} />
+            <Route path="/music" render={() => <Music />} />
+            <Route path="/login" render={() => <Login />} />
+            <Route exact path="/dialogs" render={() => <DialogsContainer />} />
+          </main>
+        </div >
+      </BrowserRouter>
+    );
+  }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    initialised: state.app.initialised,
+  }
+}
+
+export default connect(mapStateToProps, { initializeApp })(App);
+

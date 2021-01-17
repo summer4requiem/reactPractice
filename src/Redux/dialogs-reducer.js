@@ -1,17 +1,9 @@
-const UPDATE_MESSAGE_FIELD = 'UPDATE-MESSAGE-FIELD';
-const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE';
+const ADD_MESSAGE = 'ADD-MESSAGE';
 
-
-export const addNewMessageCreater = () => {
+export const addMessage = (message) => {
     return {
-        type: 'ADD-NEW-MESSAGE',
-    }
-}
-
-export const updateNewMessageСreator = (newMessage) => {
-    return {
-        type: 'UPDATE-MESSAGE-FIELD',
-        text: newMessage,
+        type: ADD_MESSAGE,
+        message: message, 
     }
 }
 
@@ -67,26 +59,18 @@ let initialState = {
             name: 'Sveta'
         }
     ],
-
-    newMessageText: '',
 }
 
 const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case UPDATE_MESSAGE_FIELD:
-            return {
-                ...state,
-                newMessageText: action.text,
-            }
-            case ADD_NEW_MESSAGE:
+            case ADD_MESSAGE:
                 let newMessage = {
                     id: 58,
-                    message: state.newMessageText,
+                    message: action.message,
                 };
                 return {
                     ...state,
                     messages: [...state.messages, newMessage],
-                        newMessageText: '',
                 }
 
                 default:

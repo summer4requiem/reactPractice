@@ -3,7 +3,7 @@ import s from "./Users.module.css"
 import imgNone
 from '/Users/summer_requiem/Dev/my-app/src/components/Users/default-avatar-profile-icon-vector-18942381.jpg'
 import { NavLink } from 'react-router-dom';
-
+import Button from '@material-ui/core/Button';
 
 const Users = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -33,14 +33,14 @@ const Users = (props) => {
                                     <li className={s.userBioListItem}>{u.name}</li>
                                 </ul>
                                 {u.isFollowed ?
-                                    <button disabled={props.currentFollowUsersId.some(id => id === u.id)}
+                                    <Button variant="contained"  disabled={props.followingUserProgress.some(id => id === u.id)}
                                         className={s.unfollow} onClick={() => {
                                             props.getUnFollowThunkCreator(u.id);
-                                        }}>unfollow</button> :
-                                    <button disabled={props.currentFollowUsersId.some(id => id === u.id)}
+                                        }}>unfollow</Button> :
+                                    <Button color="primary" variant="contained" disabled={props.followingUserProgress.some(id => id === u.id)}
                                         className={s.follow} onClick={() => {
                                             props.getFollowThunkCreator(u.id);
-                                        }}>follow</button>}
+                                        }}>follow</Button>}
                             </div>
                         </div>
                     </div>)

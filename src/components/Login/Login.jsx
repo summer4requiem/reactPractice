@@ -1,38 +1,51 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import s from "./Login.module.css";
-import {AuthAPI} from ".././../API/api"
+import { LoginInput, PasswordInput } from '../FormsControls/formsControls';
+import { requiredField, email } from '../../utills/validation/validation';
+import Button from '@material-ui/core/Button';
+import CheckBox from '@material-ui/core/CheckBox';
+import SaveIcon from '@material-ui/icons/Save';
+import { FormControlLabel } from '@material-ui/core';
+import { connect } from 'react-redux';
+import { LoginTC } from '../../Redux/app-reducer';
+import { Redirect } from 'react-router-dom';
 
 const LoginForm = (props) => {
-    console.log('rerender');
     return (
         <form onSubmit={props.handleSubmit}>
             <h1>Sign in / Sign out</h1>
             <fieldset className={s.loginFormFieldset}>
                 <div className={s.loginFieldWrapper}>
-                    <label className={s.loginLabel} htmlFor="email">Login</label>
-                    <Field placeholder="login" id="email"  className={s.loginInput} name="email" component={"input"} />
+                    <Field validate={[email, requiredField]} placeholder="email address" id="email" name="email" component={LoginInput} />
                 </div>
                 <div className={s.loginFieldWrapper}>
-                    <label className={s.loginLabel} htmlFor="password">Password</label>
-                    <Field className={s.loginInput} id="password" type="password" name="password" component={"input"} />
+                    <Field validate={[requiredField]} className={s.loginInput} id="password" type="password" name="password" component={PasswordInput} />
                 </div>
             </fieldset>
             <div>
-                <Field type="checkbox" name={"rememberMe"} component={"input"} />
-                <label htmlFor="">remember me</label>
+                <FormControlLabel
+                    control={<Field type="checkbox" name={"rememberMe"} component={CheckBox} />
+                    }
+                    label='Remember me'
+                />
             </div>
-            <button className={s.logInButton} type="submit">Login</button>
+            {props.error && <div className={"common_form_error"}>{props.error}</div>}
+            <Button startIcon={<SaveIcon />} size="large" variant="contained" color="primary" type="submit">Login</Button>
         </form >
     );
 }
 
 const ReduxLoginForm = reduxForm({ form: `login` })(LoginForm);
-const Login = () => {
+const Login = (props) => {
     let onSubmit = (FormData) => {
-        console.log(FormData);
-        AuthAPI.logIn(FormData.email, FormData.password, FormData.rememberMe, true);
+        props.LoginTC(FormData.email, FormData.password, FormData.rememberMe, true);
     }
+
+    if (props.isAuth) {
+        return <Redirect to="/profile"></Redirect>
+    }
+
     return (
         <section className={s.login}>
             <ReduxLoginForm onSubmit={onSubmit} />
@@ -40,4 +53,10 @@ const Login = () => {
     )
 }
 
-export default Login;
+const mapStateToProps = (state) => {
+    return {
+        isAuth: state.app.isAuth,
+    }
+}
+
+export default connect(mapStateToProps, { LoginTC })(Login);

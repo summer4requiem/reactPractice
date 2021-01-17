@@ -1,6 +1,6 @@
 // DAL LEVEL
 import * as axios from 'axios';
-
+const NEWS_URL = `http://newsapi.org/v2/top-headlines?country=us&apiKey=9b6487bc6e49451aa9ab17e3076854e4`;
 
 const axiosInstance = axios.create({
     withCredentials: true,
@@ -9,6 +9,14 @@ const axiosInstance = axios.create({
         'API-KEY': `63833407-6dd6-4311-aa68-fc403e60b1a9`
     }
 });
+
+export const NewsAPI = {
+    getNews: () => {
+        return axios.get(NEWS_URL);
+    }
+}
+
+NewsAPI.getNews();
 
 export const UsersAPI = {
     getUsers: (currentPage = 1, pageSize = 10) => {
@@ -38,18 +46,16 @@ export const AuthAPI = {
             rememberMe,
             captcha,
         }
-        return axiosInstance.post(`auth/login`, params).then(response => {
-            return response.data.resultCode === 0 ? response.data : ``;
-        })
+        return axiosInstance.post(`auth/login`, params);
     },
-    
+
     logOut: () => {
         return axiosInstance.delete(`auth/login`);
     }
 }
 
 export const ProfileAPI = {
-    getProfile: (userId) => {
+    getProfile: (userId = 2) => {
         return axiosInstance.get(`profile/${userId}`);
     },
     getStatus: (userId) => {
@@ -61,3 +67,13 @@ export const ProfileAPI = {
         });
     }
 }
+
+
+// var req = new Request(newsUrl);
+// fetch(req)
+//     .then(function (response) {
+//         debugger;
+//         console.log(response.json());
+//     })
+
+// news api key   9b6487bc6e49451aa9ab17e3076854e4

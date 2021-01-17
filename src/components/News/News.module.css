@@ -1,0 +1,25 @@
+.newsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.feed {
+    background-color: #f5f5f5;
+}
+
+.newsCard {
+    width: 30%;
+    background-color: #ffffff;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+p {
+    color: rgba(0, 0, 0, 0.54);
+}
+
+/* img {
+    width: 100%;
+    display: block;
+} */

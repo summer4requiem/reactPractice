@@ -62,13 +62,13 @@ export const getUsersThunkCreator = (currentPage, pageSize) => {
 
 export const changePageThunkCreator = (pageNumber, pageSize) => {
     return dispatch => {
-            dispatch(toggleFetching(true));
-            // dispatch(changePage(pageNumber));
-            UsersAPI.getUsers(pageNumber, pageSize).then(data => {
-                dispatch(toggleFetching(false));
-                dispatch(setUsers(data.items));
-            });
-}
+        dispatch(toggleFetching(true));
+        // dispatch(changePage(pageNumber));
+        UsersAPI.getUsers(pageNumber, pageSize).then(data => {
+            dispatch(toggleFetching(false));
+            dispatch(setUsers(data.items));
+        });
+    }
 }
 
 export const getFollowThunkCreator = (userId) => {
@@ -97,11 +97,18 @@ let initialState = {
     totalUsersCount: 20,
     currentPage: 1,
     isPageLoading: false,
-    currentFollowUsersId: [],
+    followingUserProgress: [],
+    fake: 0,
 }
 
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
+        case "FAKE_ACTION": {
+            return{
+                ...state, fake: state.fake + 1,
+            }
+
+        }
         case FOLLOW: {
             return {
                 ...state,
@@ -162,7 +169,7 @@ const usersReducer = (state = initialState, action) => {
         case TOGGLE_FOLLOWING: {
             return {
                 ...state,
-                currentFollowUsersId: action.isPageLoading ? [...state.currentFollowUsersId, action.userId] : state.currentFollowUsersId.filter(id => id !== action.userId),
+                followingUserProgress: action.isPageLoading ? [...state.followingUserProgress, action.userId] : state.followingUserProgress.filter(id => id !== action.userId),
             }
         }
 

@@ -24,11 +24,3 @@
 .loginFieldWrapper {
     margin-bottom: 1em;
 }
-
-.logInButton {
-    background-color: var(--main-color);
-    padding: 0.7em 2em;
-    color: aliceblue;
-    border: none;
-    font-size: 1rem;
-}

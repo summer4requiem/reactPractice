@@ -4,22 +4,25 @@
     grid-column-end: 3;
     padding: 0.5em;
     position: relative;
-}
-
-.header__login {
-    position: absolute;
-    right: 0;
-    top: 4px;
-    width: 40px;
-    height: 40px;
-    background-color: rgb(255, 255, 255);
-    border-radius: 50%;
+    display: flex;
 }
 
 .headerUserId {
     text-transform: uppercase;
     font-weight: bold;
+}
+.header__userinfo__auth_btn{
+    position: absolute;
+    right: 0.2em;
+    top: 0.5em;
+    font-size: 1rem;
+    padding: 5px 14px;
+    text-transform: uppercase;
+}
 
+.header__userinfo__auth_btn:active{
+    background-color: #3f51b543;
+    color: white;
 }
 
 .header__userinfo {
@@ -27,5 +30,5 @@
     font-size: 2em;
     display: block;
     padding: 0 14px;
-    color: var(--main-color);
+    color: white
 };

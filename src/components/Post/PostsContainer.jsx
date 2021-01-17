@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import { compose } from 'redux';
-import {addPost, updateNewPostText} from '../../Redux/profile-reducer';
-import MakePosts from './MakePosts';
+import {addPost} from '../../Redux/profile-reducer';
+import Posts from './Posts';
 
 const mapStateToProps = (state) => {
     return {
@@ -13,8 +13,7 @@ const mapStateToProps = (state) => {
 
 export default compose(
     connect(mapStateToProps, {
-        updateNewPostText,
         addPost,
     })
-)(MakePosts);
+)(Posts);
 

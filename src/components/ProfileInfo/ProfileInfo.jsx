@@ -16,7 +16,7 @@ const ProfileInfo = (props) => {
                 <div className={s.descriptionWrapper}>
                     <ul className={ s.descriptionImg }>
                         <ProfileStatus status = {props.status} setStatus = {props.setStatus} updateUserStatus = {props.updateUserStatus} />
-                        <li className={ s.descriptionListItem }><img src={ props.profile.photos.large } width="200px" height="220px" alt=""/></li>
+                        <li className={ s.descriptionListItem }><img src={ props.profile.photos.large || props.profile.photos.small } width="200px" height="220px" alt=""/></li>
                     </ul>
                     <ul className={ s.contactsList }>
                         <li className={s.contactsListItem }>date of birth: 4 june 1996</li>
