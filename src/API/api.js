@@ -67,13 +67,3 @@ export const ProfileAPI = {
         });
     }
 }
-
-
-// var req = new Request(newsUrl);
-// fetch(req)
-//     .then(function (response) {
-//         debugger;
-//         console.log(response.json());
-//     })
-
-// news api key   9b6487bc6e49451aa9ab17e3076854e4

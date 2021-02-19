@@ -1,9 +1,11 @@
 import React from 'react';
 import Preloader from '../Users/preloader';
 import s from "./Profile.module.css"
-import ProfileStatus from './ProfileStatus';
+// import ProfileStatus from './ProfileStatus';
+import ProfileStatusWithHooks from './ProfileStatusWithHooks';
 
 const ProfileInfo = (props) => {
+    debugger;
     props.setUserProfile(props.profile);
     if (!props.profile) {
         return <Preloader/>
@@ -15,7 +17,8 @@ const ProfileInfo = (props) => {
                 <h1 className={ s.descriptionHeader }>{ props.profile.fullName }</h1>
                 <div className={s.descriptionWrapper}>
                     <ul className={ s.descriptionImg }>
-                        <ProfileStatus status = {props.status} setStatus = {props.setStatus} updateUserStatus = {props.updateUserStatus} />
+                    {/* <ProfileStatusWithHooks/> */}
+                        <ProfileStatusWithHooks status = {props.status} setStatus = {props.setStatus} updateUserStatus = {props.updateUserStatus} />
                         <li className={ s.descriptionListItem }><img src={ props.profile.photos.large || props.profile.photos.small } width="200px" height="220px" alt=""/></li>
                     </ul>
                     <ul className={ s.contactsList }>

@@ -15,13 +15,11 @@ class ProfileContainer extends React.Component {
                 this.props.history.push("./login");
             }
         }
-
         this.props.getProfile(userId);
-        this.props.getProfileStatus(userId)
+        this.props.getProfileStatus(userId);
     }
 
     render() {
-        // console.log(`Profile rendered`);
         return (
             <Profile {...this.props} profile={this.props.profile} status={this.props.status} updateUserStatus={this.props.updateUserStatus} />
         )
@@ -29,7 +27,6 @@ class ProfileContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    // console.log(`mapStateToProps`);
     return {
         profile: state.profilePage.profile,
         status: state.profilePage.status,

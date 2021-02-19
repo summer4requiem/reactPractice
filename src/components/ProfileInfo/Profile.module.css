@@ -24,7 +24,16 @@
     line-height: 2em;
 }
 
-.description{
-    padding: 1em 0;
+.statusEdit{
+    display: block;
+    background-color: transparent;
+    padding: 10px 20px;
+    width: 160px;
+    border: none;
+    outline: 1px solid gray;
 } 
+.statusStatic{
+    background-color:#80808052;
+    padding: 10px 20px;
+}
    

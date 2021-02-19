@@ -1,4 +1,6 @@
-import {ProfileAPI} from '../API/api';
+import {
+    ProfileAPI
+} from '../API/api';
 const ADD_POST = 'ADD-POST';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
 const SET_USER_STATUS = 'SET-USER-STATUS';
@@ -77,7 +79,6 @@ const profileReducer = (state = initialState, action) => {
             return state;
     }
 }
-
 // thunks 
 export const getProfile = (userId) => (dispatch) => {
     ProfileAPI.getProfile(userId)
@@ -87,10 +88,9 @@ export const getProfile = (userId) => (dispatch) => {
 }
 
 export const getProfileStatus = (userId) => (dispatch) => {
-    ProfileAPI.getStatus(userId)
-        .then(response => {
-            dispatch(setUserStatus(response.data));
-        });
+    ProfileAPI.getStatus(userId).then(response => {
+        dispatch(setUserStatus(response.data));
+    });
 }
 
 export const updateUserStatus = (status) => (dispatch) => {
