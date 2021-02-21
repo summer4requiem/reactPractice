@@ -5,7 +5,6 @@ import s from "./Profile.module.css"
 import ProfileStatusWithHooks from './ProfileStatusWithHooks';
 
 const ProfileInfo = (props) => {
-    debugger;
     props.setUserProfile(props.profile);
     if (!props.profile) {
         return <Preloader/>

@@ -18,7 +18,7 @@ class App extends React.Component {
     this.props.initializeApp();
   }
   render() {
-    if (!this.props.initialised) {
+    if (!this.props.initialized) {
       return (
         <Preloader />
       )
@@ -44,7 +44,7 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    initialised: state.app.initialised,
+    initialized: state.app.initialized,
   }
 }
 

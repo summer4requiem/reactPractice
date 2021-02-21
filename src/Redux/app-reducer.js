@@ -22,7 +22,7 @@ export const initializedSuccess= () => {
 }
 
 let initialState = {
-    initialised: false,
+    initialized: false,
     userId: null,
     login: null,
     email: null,
@@ -41,8 +41,8 @@ export const getAuth = () => (dispatch) => {
     });
 }
 
-export const LoginTC = (email, password, rememberMe, capcha) => (dispatch) => {
-    AuthAPI.logIn(email, password, rememberMe, capcha).then(response => {
+export const LoginTC = (email, password, rememberMe, captcha) => (dispatch) => {
+    AuthAPI.logIn(email, password, rememberMe, captcha).then(response => {
         if (response.data.resultCode === 0) {
             dispatch(getAuth());
         } else {
@@ -80,7 +80,7 @@ const appReducer = (state = initialState, action) => {
         case INITIALIZED_SUCCESS:
             return {
                 ...state,
-                initialised: true
+                initialized: true
             }
             default:
                 return state;
