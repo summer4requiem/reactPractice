@@ -4,20 +4,11 @@ import imgNone
 from '/Users/summer_requiem/Dev/my-app/src/components/Users/default-avatar-profile-icon-vector-18942381.jpg'
 import { NavLink } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
+import Paginator from './Paginator';
 
 const Users = (props) => {
-    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
-    let pages = [];
-
-    for (let index = 1; index <= pagesCount; index++) {
-        pages.push(index);
-    }
     return <section className={s.users}>
-        <ol className={s.usersPaginationList}>
-            {pages.map((p) => <li onClick={() => {
-                props.changePageOnClick(p)
-            }} className={props.currentPage === p ? s.activePage : s.userListItem}>{p}</li>)}
-        </ol>
+            <Paginator totalUsersCount = {props.totalUsersCount} pageSize={props.pageSize} changePageOnClick={props.changePageOnClick}/>
         <h1 className={s.pageTitle}>Friends</h1>
         <div className={s.usersWrapper}>
             {
@@ -32,7 +23,7 @@ const Users = (props) => {
                                     <li className={s.userBioListItem}>{u.stats}</li>
                                     <li className={s.userBioListItem}>{u.name}</li>
                                 </ul>
-                                {u.isFollowed ?
+                                {u.followed ?
                                     <Button variant="contained"  disabled={props.followingUserProgress.some(id => id === u.id)}
                                         className={s.unfollow} onClick={() => {
                                             props.getUnFollowThunkCreator(u.id);

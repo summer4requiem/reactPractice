@@ -55,7 +55,7 @@ export const AuthAPI = {
 }
 
 export const ProfileAPI = {
-    getProfile: (userId = 2) => {
+    getProfile: (userId = 3) => {
         return axiosInstance.get(`profile/${userId}`);
     },
     getStatus: (userId) => {

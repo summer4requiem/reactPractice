@@ -4,15 +4,16 @@ import Preloader from './preloader';
 
 class UsersAPIComponent extends React.Component {
     componentDidMount() {
-        this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize);
+        let {currentPage, pageSize} = this.props;
+        this.props.getUsersThunkCreator(currentPage, pageSize);
     }
 
     changePageOnClick = (pageNumber) => {
-        this.props.changePageThunkCreator(this.props.pageSize, pageNumber);
+        let {pageSize} = this.props;
+        this.props.changePageThunkCreator(pageSize, pageNumber);
     }
 
     render() {
-        console.log(`render users`);
         return <>
             { this.props.isPageLoading ?
                 <Preloader/>

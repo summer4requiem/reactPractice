@@ -1,6 +1,4 @@
-import {
-    UsersAPI
-} from "../API/api";
+import {UsersAPI} from "../API/api";
 
 const UNFOLLOW = 'UNFOLLOW';
 const FOLLOW = 'FOLLOW';
@@ -46,7 +44,23 @@ export const toggleFollowing = (isDisabledBtn, userId) => ({
     isPageLoading: isDisabledBtn,
 });
 
-//Thunk - засетает пользователей в store
+const isFollowOrUnFollow = async (dispatch, userId, API_Method, actionCreator) => {
+    dispatch(toggleFollowing(true, userId));
+    await API_Method(userId);
+    dispatch(actionCreator(userId));
+    dispatch(toggleFollowing(false, userId));
+}
+
+// export const getUsersThunkCreator = (pageSize, currentPage) => async (dispatch) => {
+//     dispatch(toggleFetching(true));
+//     if (initialState.users.length === 0) {
+//         let data = await UsersAPI.getUsers(pageSize, currentPage);
+//         dispatch(toggleFetching(false));
+//         dispatch(setUsers(data.items));
+//         dispatch(setTotalCount(data.totalCount));
+//     };
+// }
+
 export const getUsersThunkCreator = (currentPage, pageSize) => {
     return dispatch => {
         dispatch(toggleFetching(true));
@@ -70,45 +84,34 @@ export const changePageThunkCreator = (pageNumber, pageSize) => {
         });
     }
 }
+ 
+// export const changePageThunkCreator = (pageNumber, pageSize) => async (dispatch) => {
+//     dispatch(toggleFetching(true));
+//     dispatch(changeCurrentPage(pageNumber));
+//     const data = await UsersAPI.getUsers(pageNumber, pageSize);
+//     dispatch(toggleFetching(false));
+//     dispatch(setUsers(data.items));
+// }
 
-export const getFollowThunkCreator = (userId) => {
-    return dispatch => {
-        dispatch(toggleFollowing(true, userId));
-        UsersAPI.followUser(userId).then(() => {
-            dispatch(follow(userId));
-        });
-        dispatch(toggleFollowing(false, userId));
-    }
+export const getFollowThunkCreator = (userId) => async (dispatch) => {
+    isFollowOrUnFollow(dispatch, userId, UsersAPI.followUser, follow);
 }
 
-export const getUnFollowThunkCreator = (userId) => {
-    return dispatch => {
-        dispatch(toggleFollowing(true, userId));
-        UsersAPI.unFollowUser(userId).then(() => {
-            dispatch(unfollow(userId));
-        })
-        dispatch(toggleFollowing(false, userId));
-    }
+export const getUnFollowThunkCreator = (userId) => async (dispatch) => {
+        isFollowOrUnFollow(dispatch, userId, UsersAPI.unFollowUser, unfollow);
 }
 
 let initialState = {
     users: [],
-    pageSize: 100,
+    pageSize: 90,
     totalUsersCount: 20,
     currentPage: 1,
     isPageLoading: false,
     followingUserProgress: [],
-    fake: 0,
 }
 
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
-        case "FAKE_ACTION": {
-            return{
-                ...state, fake: state.fake + 1,
-            }
-
-        }
         case FOLLOW: {
             return {
                 ...state,
@@ -116,7 +119,7 @@ const usersReducer = (state = initialState, action) => {
                     if (u.id === action.userID) {
                         return {
                             ...u,
-                            isFollowed: true
+                            followed: true
                         };
                     }
                     return u;
@@ -130,7 +133,7 @@ const usersReducer = (state = initialState, action) => {
                     if (u.id === action.userID) {
                         return {
                             ...u,
-                            isFollowed: false
+                            followed: false
                         };
                     }
                     return u;
