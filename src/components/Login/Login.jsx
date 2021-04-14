@@ -2,7 +2,7 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 import s from "./Login.module.css";
 import { LoginInput, PasswordInput,createField } from "../FormsControls/formsControls";
-import { requiredField, email } from "../../utills/validation/validation";
+import { requiredField, email } from "../../utils/validation/utils";
 import Button from "@material-ui/core/Button";
 import SaveIcon from "@material-ui/icons/Save";
 import { FormControlLabel } from "@material-ui/core";
@@ -16,7 +16,7 @@ const LoginForm = ({handleSubmit, error}) => {
       <h1>Sign in / Sign out</h1>
       <fieldset className={s.loginFormFieldset}>
         <div className={s.loginFieldWrapper}>
-        {createField("email", "email", "email address",LoginInput, [email, requiredField] )};
+        {createField("email", "email", "email address", LoginInput, [email, requiredField] )};
           {/* <Field
             validate={[email, requiredField]}
             placeholder="email address"

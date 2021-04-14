@@ -5,7 +5,7 @@ import './index.css';
 import MainApp from './App';
 
 ReactDOM.render(<React.StrictMode>
-<MainApp/>
+    <MainApp />
 </React.StrictMode >, document.getElementById('root'));
 
 serviceWorker.unregister();

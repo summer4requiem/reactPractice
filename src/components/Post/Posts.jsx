@@ -2,7 +2,7 @@ import React from "react";
 import AddedPosts from "./AddedPosts";
 import s from "./Post.module.css";
 import { Field, reduxForm } from "redux-form";
-import { requiredField, maxLength15 } from "../../utills/validation/validation";
+import { requiredField, maxLength15 } from "../../utils/validation/utils";
 import { Textarea } from "../FormsControls/formsControls";
 
 const FormPost = (props) => (

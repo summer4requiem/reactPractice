@@ -1,70 +1,97 @@
-import {ProfileAPI} from '../API/api';
+import { ProfileAPI } from '../API/api';
+import {ProfileTypes, PostTypes } from '../types/types';
 const ADD_POST = 'ADD-POST';
 const DELETE_POST = 'DELETE-POST';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
 const SET_USER_STATUS = 'SET-USER-STATUS';
 
-export const addPost = (post) => {
+type AddPostType = {
+    type: typeof ADD_POST,
+    post: string,
+}
+
+type setUserProfileType = {
+    type: typeof SET_USER_PROFILE,
+    profile: any,
+}
+
+type setUserStatusType = {
+    type: typeof SET_USER_STATUS,
+    status: string,
+}
+
+type deletePost = {
+    type: typeof DELETE_POST,
+    postId: number,
+}
+
+export const addPost = (post: string): AddPostType => {
     return {
         type: ADD_POST,
         post: post,
     }
 }
 
-export const setUserProfile = (profile) => {
+export const setUserProfile = (profile: Object): setUserProfileType => {
     return {
         type: SET_USER_PROFILE,
         profile,
     }
 }
 
-export const setUserStatus = (status) => {
+export const setUserStatus = (status: string): setUserStatusType => {
     return {
         type: SET_USER_STATUS,
         status,
     }
 }
 
-export const deletePost = (postId) => {
+export const deletePost = (postId: number): deletePost => {
     return {
         type: DELETE_POST,
-        post: postId,
+        postId: postId,
     }
 };
 
 let initialState = {
     posts: [{
-            message: 'hi, how are you',
-            id: 1,
-            likesCount: 11,
-        },
-        {
-            message: 'my second post',
-            id: 2,
-            likesCount: 12,
-        },
-        {
-            message: "it's my first post",
-            id: 3,
-            likesCount: 14,
-        },
-        {
-            message: "it's my first post",
-            id: 4,
-            likesCount: 14,
-        }
-    ],
-    profile: null,
+        message: 'hi, how are you',
+        id: 1,
+        likesCount: 11,
+    },
+    {
+        message: 'my second post',
+        id: 2,
+        likesCount: 12,
+    },
+    {
+        message: "it's my first post",
+        id: 3,
+        likesCount: 14,
+    },
+    {
+        message: "it's my first post",
+        id: 4,
+        likesCount: 14,
+    }
+    ] as Array<PostTypes>,
+    profile: null as ProfileTypes | null,
     status: '',
 }
 
-const profileReducer = (state = initialState, action) => {
+type initialStateType = {
+    posts: Array<PostTypes>,
+    profile: object | null,
+    status: string
+};
+
+const profileReducer = (state = initialState, action: any): initialStateType => {
     switch (action.type) {
         case ADD_POST: {
             let newPost = {
                 id: Math.floor(Math.random() * 100),
                 message: action.post,
-                likesCount: Math.floor(Math.random(2) * 100),
+                likesCount: Math.floor(Math.random() * 100),
             };
             return {
                 ...state,
@@ -97,18 +124,18 @@ const profileReducer = (state = initialState, action) => {
             return state;
     }
 }
-// thunks 
-export const getProfile = (userId) => async (dispatch) => {
+
+export const getProfile = (userId: number) => async (dispatch: any) => {
     const response = await ProfileAPI.getProfile(userId);
     dispatch(setUserProfile(response.data));
 };
 
-export const getProfileStatus = (userId) => async (dispatch) => {
+export const getProfileStatus = (userId: number) => async (dispatch: any) => {
     let response = await ProfileAPI.getStatus(userId);
     dispatch(setUserStatus(response.data));
 };
 
-export const updateUserStatus = (status) => async (dispatch) => {
+export const updateUserStatus = (status: string) => async (dispatch: any) => {
     let response = await ProfileAPI.updateStatus(status);
     if (response.data.resultCode === 0) {
         dispatch(setUserStatus(status));

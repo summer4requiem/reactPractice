@@ -1,7 +1,7 @@
 import React from 'react';
 import s from "./Profile.module.css"
 
-class ProfileStatus extends React.Component {
+class ProfileStatusClass extends React.Component {
     state = {
         idEditMode: false,
         status: this.props.status,
@@ -31,7 +31,7 @@ class ProfileStatus extends React.Component {
         if (prevProps.status !== this.props.status) {
             this.setState({
                 status: this.props.status,
-            })
+            });
         }
     }
 
@@ -43,7 +43,7 @@ class ProfileStatus extends React.Component {
                         <input onChange={this.onStatusChange} autoFocus={true} onBlur={this.deActivateEditMode} type="text" value={this.state.status} />
                     </li>
                     :
-                    <li className={s.description} onDoubleClick={this.activateEditMode}>
+                    <li className={s.description} onDoubleClick={this.activateEditMode} title={'status_text'}>
                         <span>{this.state.status || '--no status--'}</span>
                     </li>}
             </>
@@ -51,4 +51,4 @@ class ProfileStatus extends React.Component {
     }
 }
 
-// export default ProfileStatus;
+export default ProfileStatusClass;

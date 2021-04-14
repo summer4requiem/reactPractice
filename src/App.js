@@ -21,10 +21,9 @@ class App extends React.Component {
   }
   render() {
     if (!this.props.initialized) {
-      return <Preloader />;
+      return <Preloader />
     }
     return (
-      
         <div className="App">
           <HeaderContainer />
           <NavigationContainer />
@@ -34,13 +33,12 @@ class App extends React.Component {
               render={() => <ProfileContainer />}
             />
             <Route path="/news" render={() => <News />} />
-            <Route path="/users" render={() => <UsersContainer />} />
+            <Route path="/users" render={() => <UsersContainer />}  title = {'online chat'}/>
             <Route path="/music" render={() => <Music />} />
             <Route path="/login" render={() => <Login />} />
             <Route exact path="/dialogs" render={() => <DialogsContainer />} />
           </main>
         </div>
-
     );
   }
 }
@@ -53,7 +51,7 @@ const mapStateToProps = (state) => {
 
 let AppContainer = connect(mapStateToProps, { initializeApp })(App);
 
-const MainApp = (props) => (
+const MainApp = () => (
   <BrowserRouter>
     <Provider store={store}>
     <AppContainer />

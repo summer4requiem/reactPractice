@@ -1,5 +1,4 @@
-// DAL LEVEL
-import * as axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 const NEWS_URL = `http://newsapi.org/v2/top-headlines?country=us&apiKey=9b6487bc6e49451aa9ab17e3076854e4`;
 
 const axiosInstance = axios.create({
@@ -22,31 +21,47 @@ export const UsersAPI = {
     getUsers: (currentPage = 1, pageSize = 10) => {
         return axiosInstance.get(`users?page=${currentPage}&count=${pageSize}`).then(response => response.data);
     },
-    followUser: (userId) => {
+    followUser: (userId: number) => {
         return axiosInstance.post(`follow/${userId}`).then(response => {
             return response.data.resultCode === 0 ? response.data : ``;
         });
     },
-    unFollowUser: (userId) => {
+    unFollowUser: (userId: number) => {
         return axiosInstance.delete(`follow/${userId}`).then(response => {
             return response.data.resultCode === 0 ? response.data : ``;
         });
     },
 }
 
+export enum ResultCodesEnum  {
+    success = 0,
+    error = 1,
+}
+type MeResponseType = {
+    data: { id: number, email: string, login: string },
+    resultCode: ResultCodesEnum,
+    messages: Array<string>,
+}
+
+type LogInResponseType = {
+    data: { id: number },
+    resultCode: ResultCodesEnum,
+    messages: Array<string>,
+}
+
 export const AuthAPI = {
     getAuth: () => {
-        return axiosInstance.get(`auth/me`);
+        return axiosInstance.get<MeResponseType>(`auth/me`).then(res => res.data);
     },
 
-    logIn: (email, password, rememberMe, captcha) => {
+    logIn: (email: string, password: string, rememberMe: boolean, captcha: null | string) => {
         let params = {
             email,
             password,
             rememberMe,
             captcha,
         }
-        return axiosInstance.post(`auth/login`, params);
+        return axiosInstance.post<LogInResponseType>(`auth/login`, params).then(res => res.data);
     },
 
     logOut: () => {
@@ -55,13 +70,13 @@ export const AuthAPI = {
 }
 
 export const ProfileAPI = {
-    getProfile: (userId = 3) => {
+    getProfile: (userId: number = 3) => {
         return axiosInstance.get(`profile/${userId}`);
     },
-    getStatus: (userId) => {
+    getStatus: (userId: number) => {
         return axiosInstance.get(`profile/status/${userId}`);
     },
-    updateStatus: (status) => {
+    updateStatus: (status: string) => {
         return axiosInstance.put(`profile/status/`, {
             status: status
         });
